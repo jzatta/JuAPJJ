@@ -80,23 +80,7 @@ public class Combat {
 		Console.showMessage("O inimigo atacou!!!");
 		mobAttack(p,m);
 	}
-	/* Antes de entrarmos na checagem de quem ataca primeiro,
-	 * permita-me dissertar um pouco a respeito do fato de eu ter
-	 * utilizado sorte como atributo para definir quem ataca primeiro.
-	 * Em um cenario ideal de um mundo honesto, inteligente e civilizado,
-	 * utilizar-se-ia o atributo de agilidade para esses cálculos, mas
-	 * o meu sistema de combate carece de tal atributo. Agora imagine-se
-	 * explorando corajosamente uma caverna obscura, sem saber que tipo
-	 * de criatura anda por lá. Convém possuir um pouco de sorte para que 
-	 * um urso não apareça e lhe estupre do nada. Talvez, se você for
-	 * mais sortudo ainda, o urso tropeçará enquanto arma seu assédio
-	 * sexual final, você ouvirá o som, e terá tempo de armar um eficaz
-	 * contra estupro, aproveitando tudo que o Canadá tem a lhe oferecer.
-	 * 
-	 * Atualização: Coloquei Agi nos atributos, ignore o texto acima.
-	 * Se o urso for mais rapido, ele estupra, se você for
-	 * mais rápido, você contra-estupra. É isso.
-	 * */
+
 	public int checkFirst(int pAgi,int mAgi){
 		
 		if(pAgi > mAgi){
