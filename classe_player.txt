@@ -1,0 +1,55 @@
+Classe Player (segundo o estilo rpg tradicional simples)
+
+Atributos base  personalizaveis pelo jogador ou que são alterados no "lvl up" :
+(copiei do Ragnarok Online, me julguem)
+
+Str(Strength): usado em cálculo de dano
+Agi(Agility): usado para teste de iniciativa (quem ataca primeiro, quem junta
+	      a nota de 100 conto que caiu no chao primeiro, etc)
+Dex(Dexterity): Usado em cálculo de acerto 
+Intl(Inteligence):Usado para calcular seu sp, e em calculos de dano magico e
+		resistencia magica.
+Vit(Vitality): Usado pra calcular a vida maxima, e para calcular a sua defesa
+	      (no calculo de dano do inimigo).
+Luck: Usado em calculo de chance de acerto crítico e em quaisquer eventos que
+     precisem de sorte.
+
+---------// ------- // -------- // ------- // ------- // ------ // ---------
+
+
+Atributos que são calculados a partir dos outros atributos:
+
+Base HP: Vida máxima do jogador. Constante calculada a partir de VIT. Toda
+vez que o jogador sobe de nivel, deve ser calculada novamente, pois VIT pode
+mudar.
+
+Base SP (Skill Points): SP é o recurso utilizado para utilizar habilidades
+especiais como magias e coisa do tipo. É calculado a partir de INTL. Assim
+como o Base HP, deve ser calculado novamente ao subir de nivel.
+
+Current HP: O HP do jogador em combate, é uma variavel, já que o jogador pode
+receber dano ou cura, e não queremos mexer no base HP. Não pode superar o base HP
+a não ser que o jogador esteja utilizando alguma habilidade que aumente temporariamente
+sua vida máxima.
+
+Current SP: Análogo ao Current HP.
+
+----------------------------------------------------------------------------
+Atributos especiais influenciados por eventos:
+
+Level: O nível do jogador. Possivelmente adotar um sistema de nível máximo,
+mas pode ser infinito tambem (em alguns jogos você pode upar o quanto quiser).
+Cada level possui uma quantidade de experiencia que o jogador deve adquirir
+para passar para o proximo level (achar uma função legal pra fazer essa curva
+de exp). Ao subir de nivel, atributos são incrementados (pode ser feito manualmente
+ou pensar em alguma forma de definir quais atributos são incrementados. Manualmente
+é mais facil: o jogador pode distribuir uma quantidade de pontos entre seus atributos
+ou alternativamente, escolher um atributo para evoluir).
+
+Experiencia: Um número inteiro, que ao atingir um certo valor, permite ao jogador
+subir de nível. Cada monstro derrotado pelo jogador concede uma certa quantidade
+de pontos de experiência. 
+
+=====================~~~~~~======================~~~~~~========================
+
+Era isso :>
