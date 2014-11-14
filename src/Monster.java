@@ -19,7 +19,10 @@ class Monster extends Player implements GeneratedEvent{
 		return false;
 	}
 	public boolean damage(int damage){
-		//algorithm to reduce monster health
+		health = health - damage;
+		if(health < 0){
+			health = 0;
+		}
 	}
 	
 	public int attack(){
