@@ -45,4 +45,16 @@ class Player{
 		level++;
 		calculateHpSp();
 	}
+	public void damage(int d){
+		currentHP -= d;
+		if(currentHP < 0){
+			currentHP = 0;
+		}
+	}
+	public void heal(int h){
+		currentHP += h;
+		if(currentHP > baseHP){
+			currentHP = baseHP;
+		}
+	}
 }

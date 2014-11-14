@@ -1,4 +1,4 @@
-class Monster extends Player implements GeneratedEvent{
+class Monster implements GeneratedEvent{
 	private String name;
 	private int level;
 	private int health;
@@ -8,7 +8,7 @@ class Monster extends Player implements GeneratedEvent{
 	public Monster(Scenario scene, int level){
 		this.name = scene.getMonsterName();
 		this.level = level;
-		//super() with random monster name and stats
+		
 		// configure other attributes based on level and Math.random
 	}
 	

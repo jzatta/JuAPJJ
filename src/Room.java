@@ -34,10 +34,10 @@ class Room{
 		switch (makingtype){
 			case 0:
 				return new Monster(scene,makingDifficulty);
-			case 1:
+				case 1:
 				return new Trap(scene,makingDifficulty);
 			case 2:
 				return new Chest(scene,makingDifficulty);
 		}
 	}
-}
+ } //callback
