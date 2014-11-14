@@ -12,12 +12,12 @@ class Player{
 		this.name = name;
 		this.level = 1;
 		this.goldCoins = 0L;
-		str = 1;
-		agi = 1;
-		dex = 1;
-		intl = 1;
-		vit = 1;
-		luck = 1;
+		str = 5;
+		agi = 5;
+		dex = 5;
+		intl = 5;
+		vit = 10;
+		luck = 5;
 		calculateHpSp(); //funcao que calcula hp e sp maximos;
 		currentHP = baseHP;
 		currentSP = baseSP;
@@ -46,7 +46,9 @@ class Player{
 	public int getVit(){ return vit; }
 	public int getLuck(){ return luck; }//SHE'S UP ALL NIGHT TO getLucky
 	public int getLevel(){ return level; }
-	
+	public String getName(){ return name; }
+	public int getHP(){ return currentHP; }
+
 	public void levelUp(){
 		level++;
 		calculateHpSp();
