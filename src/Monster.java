@@ -1,4 +1,4 @@
-class Monster implements GeneratedEvent{
+class Monster extends Player implements GeneratedEvent{
 	private String name;
 	private int level;
 	private int health;
@@ -8,22 +8,24 @@ class Monster implements GeneratedEvent{
 	Public Monster(Scenario scene, int level){
 		this.name = scene.getMonsterName();
 		this.level = level;
+		//super() with random monster name and stats
 		// configure other attributes based on level and Math.random
 	}
 	
-	public boolean actived(){
-		if (health > 0)
+	public boolean active(){
+		if (health > 0){
 			return true;
+		}
 		return false;
 	}
-	public boolean attack(int damage){
+	public boolean damage(int damage){
 		//algorithm to reduce monster health
 	}
 	
-	public int counterAttack(){
+	public int attack(){
 		//algorithm to reduce player health
 	}
-	public boolean hasItem(int luck){
+	public boolean dropsItem(int luck){
 		// could find an item, something like: if you dosen't pickUp an item yet
 	}
 	public Item pickUpItem(int luck){
