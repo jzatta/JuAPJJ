@@ -1,14 +1,29 @@
+import java.util.*;
+
 class NameGenerator{
-	private String[] noun;	//Something like Quarto
-	private String[] adjective;	//do Joao
+	
+	private List<String> nouns;
+	private List<String> adjectives;
 
 	
-	public NameGenerator(String[] noun, String[] adjective){
-		this.noun = noun;
-		this.adjective = adjective;
+	public NameGenerator(){
+		nouns = new ArrayList<String>();
+		adjectives = new ArrayList<String>();
 	}
 
 	public String getName(){
 		// return noun[random] + adjective[random];
+	}
+	public void addNoun(String noun){
+		nouns.add(noun);
+	}
+	public void removeNoun(String noun){
+		nouns.remove(noun);
+	}
+	public void addAdjective(String adjective){
+		adjectives.add(adjective);
+	}
+	public void removeAdjective(String adjective){
+		adjectives.remove(adjective);
 	}
 }
