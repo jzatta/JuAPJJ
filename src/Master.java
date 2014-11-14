@@ -23,7 +23,7 @@ class Master {
 	public void run(){
 		while (player.alive()){
 			event = room.getEvent(this.scene);
-			System.out.println(event.getInteraction() + " What do you will do?");
+			System.out.println(event.getInteraction() + " What will you do?");
 		}
 	}
 	
