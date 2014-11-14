@@ -16,7 +16,7 @@ public class Player {
 	public Player(){
 		this.atributes = generateAttributes(0);
 		this.currentHp = atributes[0];
-		this.pClass = new PlayerClass(0);
+		this.pClass = PlayerClass.Aprendiz;
 		this.playerName = "Generic player";
 		this.playerStory = "";
 	}
