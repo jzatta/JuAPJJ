@@ -33,12 +33,13 @@ class Player{
 	public void setVit(int vit){ this.vit = vit; }
 	public void setLuck(int luck){ this.luck = luck; }
 	
-	public int getStr{ return str; }
-	public int getAgi{ return agi;}
-	public int getDex{ return dex; }
-	public int getIntl{ return intl; }
-	public int getVit{ return vit; }
-	public int getLuck{ return luck; }//SHE'S UP ALL NIGHT TO getLucky
+	public int getStr(){ return str; }
+	public int getAgi(){ return agi;}
+	public int getDex(){ return dex; }
+	public int getIntl(){ return intl; }
+	public int getVit(){ return vit; }
+	public int getLuck(){ return luck; }//SHE'S UP ALL NIGHT TO getLucky
+	public int getLevel(){ return level; }
 	
 	public void levelUp(){
 		level++;

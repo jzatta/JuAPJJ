@@ -1,7 +1,8 @@
-Interface GeneratedEvent{
-	boolean actived();
-	boolean attack(int damage);
-	int counterAttack();
-	boolean hasItem(int luck);
+interface GeneratedEvent{
+	boolean active();
+	boolean damage(int damage);
+	int attack();
+	boolean dropsItem(int luck);
 	Item pickUpItem(int luck);
+	String getInteraction();
 }
