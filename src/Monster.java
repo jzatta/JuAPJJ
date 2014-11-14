@@ -38,4 +38,8 @@ class Monster implements GeneratedEvent{
 	public String getInteraction(){
 		return "In your front are a " + this.name + ". Him appear to be a " + level + " monster.";
 	}
+	
+	public void addItselfRoom(Room room, int potential){
+		room.addEventGenerated(this.getClass(),potential);
+	}
 }

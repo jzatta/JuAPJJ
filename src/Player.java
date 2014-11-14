@@ -25,6 +25,12 @@ class Player{
 	public void calculateHpSp(){
 		this.baseHP = 50+10*vit;
 		this.baseSP = (int)(10+0.25*intl);
+	}
+	public boolean isAlive(){
+		if(currentHP > 0){
+			return true;
+		}
+		return false;
 	} 
 	public void setStr(int str){ this.str = str; }
 	public void setAgi(int agi){ this.agi = agi; }

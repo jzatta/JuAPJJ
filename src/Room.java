@@ -1,21 +1,30 @@
+import java.util.HashMap;
+
 class Room{
 	private String localName;
 	private int difficulty;
+	private List<Class<GeneratedEvent>> classesList;
+	private List<Integer> potentialList;
 	private static final int variance = 7;
-	private static final int potentialMonster = 16;
-	private static final int potentialTrap = 8;
-	private static final int potentialChest = 4;
 	
 	public Room(String roomName, int level){
 		this.localName = roomName;
 		this.difficulty = level;
+		classesList = new ArrayList<Class<GeneratedEvent>>();
+		potentialList = new ArrayList<Integer>();
 	}
 	
 	String roomName(){
 		return this.localName;
 	}
 	
+	public void addEventGenerated(Class<GeneratedEvent> classOf, int potential){
+		classesList.add(classOf);
+		potentialList.add(potencial);
+	}
+	
 	GeneratedEvent getEvent(Scenario scene){
+<<<<<<< HEAD
 		int makingtype;
 		double chanceMonster = Math.random() * this.potentialMonster;
 		double chanceTrap = Math.random() * this.potentialTrap;
@@ -38,6 +47,17 @@ class Room{
 				return new Trap(scene,makingDifficulty);
 			case 2:
 				return new Chest(scene,makingDifficulty);
+=======
+		double mostChance = 0;
+		int arrayIndex = 0;
+		for(int index = 0; index < potentialList.size(); index++){
+			double chance = potentialList.get(index) * Math.random();
+			if (chance > mostChance){
+				mostChance = chance;
+				arrayIndex = index;
+			}
+>>>>>>> 35cc7fccef16d72122bb3812d689efd24b5fbeb2
 		}
+		return classesList.get(arrayIndex).newInstance();
 	}
  } //callback
