@@ -1,3 +1,5 @@
+import java.io.File;
+
 class Scenario{
 	NameGenerator monsterNames;
 	NameGenerator itemNames;
@@ -7,12 +9,17 @@ class Scenario{
 		// Load templates from file
 	}
 	
-	public getRoom(int level){
-		return new Room(getRoomName(),level);
+	public void reloadTemplates(File templates){
+		// Load a new template
+	}
+	
+	public Room getRoom(int level){
+		int makingDifficulty = (int)(Math.random() * 5) - 2 + level;
+		return new Room(getRoomName(),makingDifficulty);
 	}
 	
 	public String getRoomName(){
-		return room.getName();
+		return this.roomNames.getName();
 	}
 	
 	public String getMonsterName(){

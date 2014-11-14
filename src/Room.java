@@ -2,20 +2,20 @@ class Room{
 	private String localName;
 	private int difficulty;
 	private static final int variance = 7;
-	private static final int potentialMonster = 1;
-	private static final int potentialTrap = 1;
-	private static final int potentialChest = 1;
+	private static final int potentialMonster = 16;
+	private static final int potentialTrap = 8;
+	private static final int potentialChest = 4;
 	
-	Public Room(String roomName, int level){
+	public Room(String roomName, int level){
 		this.localName = roomName;
 		this.difficulty = level;
 	}
 	
-	String getName(){
+	String roomName(){
 		return this.localName;
 	}
 	
-	GeneratedEvent getEvent(){
+	GeneratedEvent getEvent(Scenario scene){
 		int makingtype;
 		double chanceMonster = Math.random() * this.potentialMonster;
 		double chanceTrap = Math.random() * this.potentialTrap;
@@ -28,13 +28,16 @@ class Room{
 			else makingtype = 2;
 		}
 		int makingDifficulty = (int)(Math.random() * this.variance) - ((this.variance + 1) / 2) + this.difficulty;
-		switch (type){
+		if (makingDifficulty < 0){
+			makingDifficulty = 0;
+		}
+		switch (makingtype){
 			case 0:
-				return new Monster(makingDifficulty);
+				return new Monster(scene,makingDifficulty);
 			case 1:
-				return new Trap(makingDifficulty);
+				return new Trap(scene,makingDifficulty);
 			case 2:
-				return new Chest(makingDifficulty);
+				return new Chest(scene,makingDifficulty);
 		}
 	}
 }

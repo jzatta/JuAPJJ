@@ -5,7 +5,7 @@ class Monster extends Player implements GeneratedEvent{
 	private int armorLevel;
 	private int weaponLevel;
 	
-	Public Monster(Scenario scene, int level){
+	public Monster(Scenario scene, int level){
 		this.name = scene.getMonsterName();
 		this.level = level;
 		//super() with random monster name and stats
@@ -30,5 +30,9 @@ class Monster extends Player implements GeneratedEvent{
 	}
 	public Item pickUpItem(int luck){
 		// return item generated with base on level and Math.random
+	}
+	
+	public String getInteraction(){
+		return "In your front are a " + this.name + ". Him appear to be a " + level + " monster.";
 	}
 }

@@ -1,3 +1,3 @@
-public Enum ItemTypes{
+public enum ItemTypes{
 	Weapon, Armor, Helmet, Shield;
 }
