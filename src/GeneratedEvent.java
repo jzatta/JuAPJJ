@@ -5,4 +5,6 @@ interface GeneratedEvent{
 	boolean dropsItem(int luck);
 	Item pickUpItem(int luck);
 	String getInteraction();
+	
+	boolean addItselfRoom(Room room, int potential);
 }
