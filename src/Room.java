@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 
 class Room{
 	private String localName;
@@ -24,7 +24,7 @@ class Room{
 	}
 	
 	GeneratedEvent getEvent(Scenario scene){
-<<<<<<< HEAD
+
 		int makingtype;
 		double chanceMonster = Math.random() * this.potentialMonster;
 		double chanceTrap = Math.random() * this.potentialTrap;
@@ -47,7 +47,8 @@ class Room{
 				return new Trap(scene,makingDifficulty);
 			case 2:
 				return new Chest(scene,makingDifficulty);
-=======
+		}
+
 		double mostChance = 0;
 		int arrayIndex = 0;
 		for(int index = 0; index < potentialList.size(); index++){
@@ -56,7 +57,6 @@ class Room{
 				mostChance = chance;
 				arrayIndex = index;
 			}
->>>>>>> 35cc7fccef16d72122bb3812d689efd24b5fbeb2
 		}
 		return classesList.get(arrayIndex).newInstance();
 	}
