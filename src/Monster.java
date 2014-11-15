@@ -1,5 +1,4 @@
-//class Monster implements GeneratedEvent{
-class Monster{
+class Monster implements GeneratedEvent{
 	private String name;
 	private int level;
 	private int health;
@@ -67,11 +66,12 @@ class Monster{
 		}
 		return true;
 	}
-	/*
+	
 	public int attack(){
-		//damage is being calculated at the Combat class
-		//algorithm to reduce player health
-	}*/
+// 		damage is being calculated at the Combat class
+// 		algorithm to reduce player health
+		return 0;
+	}
 	
 	
 	public boolean dropsItem(int playerLuck){
@@ -81,16 +81,18 @@ class Monster{
 		}
 		return false;
 	}
-	//public Item pickUpItem(int luck){
-		// return item generated with base on level and Math.random
-	//}
+	
+	public Item pickUpItem(int luck){
+		//return item generated with base on level and Math.random();
+		return null;
+	}
 	
 	public String getInteraction(){
 		return "You face " + this.name + ". It appears to be a " + level + " monster.";
 	}
 	
 	public static void addItselfRoom(Room room, int potential){
-		room.addEventGenerated(new Monster("",1).getClass(),potential);
+		room.addGeneratedEvent(new Monster("",1).getClass(),potential);
 	}
 
 
@@ -111,5 +113,9 @@ class Monster{
 	}
 	public int getAgi(){
 		return agi;
+	}
+	
+	public String toString(){
+		return "Name: " + name +"\nLevel: "+ level +"\nHealth: "+ health +"\nstr: "+ str + "\nagi: "+agi + "\ndex: "+dex + "\nintl: "+intl + "\nvit: "+vit + "\nluck: "+luck + "\narmor: "+armorLevel + "\nweapon: "+weaponLevel+"\n"+getInteraction();
 	}
 }

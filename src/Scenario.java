@@ -23,7 +23,7 @@ class Scenario{
 	}
 	
 	public String getMonsterName(){
-		return monsterName.getName();
+		return monsterNames.getName();
 	}
 	
 	// TODO methods and attributes to others types of names
