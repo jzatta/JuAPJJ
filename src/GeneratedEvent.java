@@ -7,4 +7,6 @@ interface GeneratedEvent{
 	String getInteraction();
 	
 	boolean addItselfRoom(Room room, int potential);
+	void setuptScenario(Scenario scene);
+	void setupLevel(int level);
 }

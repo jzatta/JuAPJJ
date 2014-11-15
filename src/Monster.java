@@ -3,18 +3,38 @@ class Monster{
 	private String name;
 	private int level;
 	private int health;
-	private int str,agi,dex,intl,vit,luck; 
+	private int str,agi,dex,intl,vit,luck;
+	private int armorLevel, weaponLevel;
 
 	
-	//public Monster(Scenario scene, int level){
-	//	this.name = scene.getMonsterName();
-	//	this.level = level;
-	//	generateStats();
-	//}
+	public Monster(Scenario scene, int level){
+		this.name = scene.getMonsterName();
+		this.level = level;
+		generateStats();
+	}
+	
 	public Monster(String name,int level){ //constructor only for test purposes
 		this.name = name;
 		this. level = level;
 		generateStats();
+	}
+	
+	public Monster(){
+		this.name = null;
+		this.level = 0;
+		generateStats();
+	}
+	
+	public void setuptScenario(Scenario scene){
+		if (name == null){
+			scene.getMonsterName();
+		}
+	}
+	public void setupLevel(int level){
+		if (this.level == 0){
+			this.level = level;
+			generateStats();
+		}
 	}
 	
 	public void generateStats(){
@@ -27,6 +47,8 @@ class Monster{
 		intl = (int)((Math.random()*100)%(level+10))+1;
 		vit = (int)((Math.random()*100)%(level+10))+1;
 		luck = (int)((Math.random()*100)%(level+10))+1;
+		armorLevel = (int)(Math.random()*level-1);
+		weaponLevel = (int)(Math.random()*level-1);
 	}
 	
 	public boolean active(){
@@ -35,17 +57,23 @@ class Monster{
 		}
 		return false;
 	}
-	public void damage(int damage){
+	public boolean damage(int damage){
+		if (damage > armorLevel) damage -= armorLevel;
+		else damage = 0;
 		health = health - damage;
-		if(health < 0){
+		if(health <= 0){
 			health = 0;
+			return false;
 		}
+		return true;
 	}
 	/*
 	public int attack(){
 		//damage is being calculated at the Combat class
 		//algorithm to reduce player health
 	}*/
+	
+	
 	public boolean dropsItem(int playerLuck){
 		int itemRoll = (int)Math.random()*100;
 		if(itemRoll <= playerLuck*5){
@@ -61,9 +89,11 @@ class Monster{
 		return "You face " + this.name + ". It appears to be a " + level + " monster.";
 	}
 	
-//	public void addItselfRoom(Room room, int potential){
-//		room.addEventGenerated(this.getClass(),potential);
-//	}
+	public static void addItselfRoom(Room room, int potential){
+		room.addEventGenerated(new Monster("",1).getClass(),potential);
+	}
+
+
 	public int getLevel() {
 		return level;
 	}

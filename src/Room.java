@@ -24,31 +24,6 @@ class Room{
 	}
 	
 	GeneratedEvent getEvent(Scenario scene){
-
-		int makingtype;
-		double chanceMonster = Math.random() * this.potentialMonster;
-		double chanceTrap = Math.random() * this.potentialTrap;
-		double chanceChest = Math.random() * this.potentialChest;
-		if (chanceMonster > chanceTrap){  //check if logic are correct
-			if (chanceMonster > chanceChest) makingtype = 0;
-			else makingtype = 2;
-		} else {
-			if (chanceTrap > chanceChest) makingtype = 1;
-			else makingtype = 2;
-		}
-		int makingDifficulty = (int)(Math.random() * this.variance) - ((this.variance + 1) / 2) + this.difficulty;
-		if (makingDifficulty < 0){
-			makingDifficulty = 0;
-		}
-		switch (makingtype){
-			case 0:
-				return new Monster(scene,makingDifficulty);
-				case 1:
-				return new Trap(scene,makingDifficulty);
-			case 2:
-				return new Chest(scene,makingDifficulty);
-		}
-
 		double mostChance = 0;
 		int arrayIndex = 0;
 		for(int index = 0; index < potentialList.size(); index++){
@@ -58,6 +33,9 @@ class Room{
 				arrayIndex = index;
 			}
 		}
-		return classesList.get(arrayIndex).newInstance();
+		GeneratedEvent event = classesList.get(arrayIndex).newInstance();
+		void setuptScenario(scene);
+		void setupLevel(makingDifficulty);
+		return event;
 	}
- } //callback
+}

@@ -23,7 +23,7 @@ class Scenario{
 	}
 	
 	public String getMonsterName(){
-		// generate name based on templates from file
+		return monsterName.getName();
 	}
 	
 	// TODO methods and attributes to others types of names
