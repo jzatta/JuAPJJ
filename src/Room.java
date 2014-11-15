@@ -39,7 +39,7 @@ class Room{
 			}
 		}
 		try{
-			GeneratedEvent event = (GeneratedEvent) classesList.get(arrayIndex).newInstance();
+			GeneratedEvent event = (GeneratedEvent)classesList.get(arrayIndex).newInstance();
 			//event.setuptScenario(scene); scenario not full implemented yet
 			event.setupLevel(makingDifficulty);
 			return event;

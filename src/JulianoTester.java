@@ -4,10 +4,6 @@ class JulianoTester{
 		Monster.addItselfRoom(r,1);
 		GeneratedEvent e = r.getEvent(null);
 		Monster m = (Monster)e;
-		
-		
-		
-		
-		System.out.println(m.toString());
+		System.out.println(m.dataDebug());
 	}
 }

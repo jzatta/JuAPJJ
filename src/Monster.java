@@ -115,7 +115,8 @@ class Monster implements GeneratedEvent{
 		return agi;
 	}
 	
-	public String toString(){
+	public String dataDebug(){
+		//just for tests
 		return "Name: " + name +"\nLevel: "+ level +"\nHealth: "+ health +"\nstr: "+ str + "\nagi: "+agi + "\ndex: "+dex + "\nintl: "+intl + "\nvit: "+vit + "\nluck: "+luck + "\narmor: "+armorLevel + "\nweapon: "+weaponLevel+"\n"+getInteraction();
 	}
 }
