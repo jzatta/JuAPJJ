@@ -88,7 +88,7 @@ class Monster implements GeneratedEvent{
 	}
 	
 	public String getInteraction(){
-		return "You face " + this.name + ". It appears to be a " + level + " monster.";
+		return "You face " + this.name + ". It appears to be a level " + level + " monster.";
 	}
 	
 	public static void addItselfRoom(Room room, int potential){
