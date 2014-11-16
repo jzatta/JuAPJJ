@@ -88,8 +88,12 @@ public class Skill{
 			m.damage(finalDamage);
 		}
 	}
-	
-	
+	public String getName(){
+		return name;
+	}
+    public SkillTypes getSkillType(){
+		return type;
+	}
 }	
 
 

@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Player{
 	private long goldCoins;
 	private String name;
@@ -8,11 +10,13 @@ class Player{
 	private int level; //vamos fazer de 1 a 99? 
 	private int exp; //experiência atual
 	private int nextLevel; //exp necessaria pra subir para o proximo level
+	private List<Skill> skills;
 
 	public Player(String name){
 		this.name = name;
 		this.level = 1;
 		this.goldCoins = 0L;
+		skills = new ArrayList<Skill>();
 		baseStr = 5;
 		baseAgi = 5;
 		baseDex = 5;
@@ -55,6 +59,10 @@ class Player{
 	public int getLevel(){ return level; }
 	public String getName(){ return name; }
 	public int getHP(){ return currentHP; }
+	
+	public List<Skill> listSkills(){
+		return skills;
+	}
 
 	public void levelUp(){
 		level++;
@@ -97,5 +105,11 @@ class Player{
 	}
 	public void buffLuck(int factor){
 		luck+=factor;
+	}
+	public void addSkill(Skill s){
+		skills.add(s);
+	}
+	public void removeSkill(Skill s){
+		skills.remove(s);
 	}
 }

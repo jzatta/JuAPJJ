@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Combat{ //implements ActionListener (futuramente)
 	private Player player;
@@ -77,7 +77,33 @@ public class Combat{ //implements ActionListener (futuramente)
 		System.out.println("Foe "+monster.getName()+" took "+finalDamage+" damage.");
 	}
 	public void playerSkill(){
-		//TODO
+		List<Skill> playerSkills = player.listSkills();
+		String skillsList = "";
+		for(int i = 0; i < playerSkills.size(); i++){
+			skillsList += i+1+"."+playerSkills.get(i).getName()+"\n";
+		}
+		System.out.println("Which skill?\n"+skillsList);
+		Scanner in = new Scanner(System.in);
+		int skillToBeUsed = in.nextInt()-1;
+		useSkill(playerSkills.get(skillToBeUsed));
+	}
+	public void useSkill(Skill s){
+		SkillTypes type = s.getSkillType();
+		switch(type){
+			case HEALING:
+				s.heal(player);
+				break;
+			case BUFFING:
+				s.buff(player);
+				break;
+			case PHYSICALDAMAGE:
+				s.physicalDamage(player,monster);
+				break;
+			case MAGICDAMAGE:
+				s.magicDamage(player,monster);
+				break;
+
+		}
 	}
 	public boolean tryRun(){
 		int runTest = (int)(Math.random()*100 - player.getLuck());
