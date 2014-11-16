@@ -1,7 +1,8 @@
 class Player{
 	private long goldCoins;
 	private String name;
-	private int str,agi,dex,intl,vit,luck; //Atributos usados para calcular os outros
+	private int str,agi,dex,intl,vit,luck; //stats in combat
+	private int baseStr,baseAgi,baseDex,baseIntl,baseVit,baseLuck;//base stats
 	private int baseHP,baseSP; //calculados a partir de vit e intl, respectivamente
 	private int currentHP,currentSP; //HP e SP durante o combate
 	private int level; //vamos fazer de 1 a 99? 
@@ -12,15 +13,21 @@ class Player{
 		this.name = name;
 		this.level = 1;
 		this.goldCoins = 0L;
-		str = 5;
-		agi = 5;
-		dex = 5;
-		intl = 5;
-		vit = 10;
-		luck = 5;
+		baseStr = 5;
+		baseAgi = 5;
+		baseDex = 5;
+		baseIntl = 5;
+		baseVit = 10;
+		baseLuck = 5;
 		calculateHpSp(); //funcao que calcula hp e sp maximos;
 		currentHP = baseHP;
 		currentSP = baseSP;
+		str = baseStr;
+		agi = baseAgi;
+		dex = baseDex;
+		intl = baseIntl;
+		vit = baseVit;
+		luck = baseLuck;
 	}
 	public void calculateHpSp(){
 		this.baseHP = 50+10*vit;
@@ -64,5 +71,31 @@ class Player{
 		if(currentHP > baseHP){
 			currentHP = baseHP;
 		}
+	}
+	public void resetStats(){ //remove  buffs or debuffs after combat
+		str = baseStr;
+		agi = baseAgi;
+		dex = baseDex;
+		intl = baseIntl;
+		vit = baseVit;
+		luck = baseLuck;
+	}
+	public void buffStr(int factor){
+		str+= factor;
+	}
+	public void buffAgi(int factor){
+		agi+= factor;
+	}
+	public void buffDex(int factor){
+		dex+= factor;
+	}
+	public void buffIntl(int factor){
+		intl+= factor;
+	}
+	public void buffVit(int factor){
+		vit+= factor;
+	}
+	public void buffLuck(int factor){
+		luck+=factor;
 	}
 }

@@ -1,3 +1,3 @@
 public enum ItemTypes{
-	Weapon, Armor, Helmet, Shield;
+	Weapon, Armor, Helmet, Shield, Boots, Potion;
 }

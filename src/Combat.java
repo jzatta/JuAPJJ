@@ -26,6 +26,7 @@ public class Combat{ //implements ActionListener (futuramente)
 				fighting = playerAction();
 			}			
 		}
+		player.resetStats(); //remove any buffs or debuffs the player has
 		System.out.println("End of battle"); //placeholder
 	}
 	public boolean playerAction(){ // futuro actionPerformed quando tiver GUI. 

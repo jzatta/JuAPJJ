@@ -60,13 +60,18 @@ class Monster implements GeneratedEvent{
 		if (damage > armorLevel) damage -= armorLevel;
 		else damage = 0;
 		health = health - damage;
-		if(health <= 0){
+		if(health < 0){
 			health = 0;
 			return false;
 		}
 		return true;
 	}
-	
+	public void damageIgnoreArmor(int damage){
+		health -= damage;
+		if(health < 0){
+			health = 0;
+		}
+	}
 	public int attack(){
 // 		damage is being calculated at the Combat class
 // 		algorithm to reduce player health
@@ -113,6 +118,9 @@ class Monster implements GeneratedEvent{
 	}
 	public int getAgi(){
 		return agi;
+	}
+	public int getIntl(){
+		return intl;
 	}
 	
 	public String dataDebug(){
