@@ -52,21 +52,27 @@ public class Skill{
 			switch(index){ 
 				case 0:
 					p.buffStr(skillFactor);
+					System.out.println("STR increased!");
 					break;
 				case 1:
 					p.buffAgi(skillFactor);
+					System.out.println("AGI increased!");
 					break;
 				case 2:
 					p.buffDex(skillFactor);
+					System.out.println("DEX increased!");
 					break;
 				case 3:
 					p.buffIntl(skillFactor);
+					System.out.println("INT increased!");
 					break;
 				case 4:
 					p.buffVit(skillFactor);
+					System.out.println("VIT increased!");
 					break;
 				case 5:
 					p.buffLuck(skillFactor);
+					System.out.println("LUCK increased!");
 					break;
 				default:
 					break;
@@ -88,6 +94,7 @@ public class Skill{
 			int absoluteDamage = p.getStr()*skillFactor;
 			int finalDamage = (int)(absoluteDamage/Math.sqrt(m.getVit()));
 			m.damage(finalDamage);
+			System.out.println("Skill damage: "+finalDamage);
 		}
 	}
 	public String getName(){

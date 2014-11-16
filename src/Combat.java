@@ -75,6 +75,7 @@ public class Combat{ //implements ActionListener (futuramente)
 		}
 		monster.damage(finalDamage);
 		System.out.println("Foe "+monster.getName()+" took "+finalDamage+" damage.");
+		System.out.println(monster.getName()+"'s hp is now "+monster.getHP());
 	}
 	public void playerSkill(){
 		List<Skill> playerSkills = player.listSkills();
@@ -92,15 +93,18 @@ public class Combat{ //implements ActionListener (futuramente)
 		switch(type){
 			case HEALING:
 				s.heal(player);
+				System.out.println("Your HP is now "+player.getHP());
 				break;
 			case BUFFING:
 				s.buff(player);
 				break;
 			case PHYSICALDAMAGE:
 				s.physicalDamage(player,monster);
+				System.out.println("Foe "+monster.getName()+"'s HP is now "+monster.getHP());
 				break;
 			case MAGICDAMAGE:
 				s.magicDamage(player,monster);
+				System.out.println("Enemy's HP: "+monster.getHP());
 				break;
 
 		}
