@@ -17,6 +17,7 @@ public class Skill{
 	//will remain null.
 	public Skill(String name, String statToBuff, int skillFactor){
 		this.name = name;
+		this.type = SkillTypes.BUFFING;
 		this. skillFactor = skillFactor;
 		boolean validStat = false;
 		String[] stats = new String[]{"STR","AGI","DEX","INTL","VIT","LUCK"};
@@ -79,6 +80,7 @@ public class Skill{
 			int absoluteDamage = p.getIntl()*skillFactor;
 			int finalDamage = (int)(absoluteDamage - 0.25 * m.getIntl());
 			m.damageIgnoreArmor(finalDamage);
+			System.out.println("Magic damage: "+finalDamage);
 		}
 	}
 	public void physicalDamage(Player p, Monster m){

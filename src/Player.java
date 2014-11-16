@@ -26,15 +26,15 @@ class Player{
 		calculateHpSp(); //funcao que calcula hp e sp maximos;
 		currentHP = baseHP;
 		currentSP = baseSP;
-		str = baseStr;
-		agi = baseAgi;
-		dex = baseDex;
-		intl = baseIntl;
-		vit = baseVit;
-		luck = baseLuck;
+	   	this.str = baseStr;
+		this.agi = baseAgi;
+		this.dex = baseDex;
+		this.intl = baseIntl;
+		this.vit = baseVit;
+		this.luck = baseLuck;
 	}
 	public void calculateHpSp(){
-		this.baseHP = 50+10*vit;
+		this.baseHP = 50+ 10* baseVit;
 		this.baseSP = (int)(10+0.25*intl);
 	}
 	public boolean isAlive(){
