@@ -11,12 +11,18 @@ class Player{
 	private int exp; //experiência atual
 	private int nextLevel; //exp necessaria pra subir para o proximo level
 	private List<Skill> skills;
+	private List<Item> inventory;
+	private Item[] equipedItems;
+	private int accumulatedWeight;//soma dos pesos dos itens no inventario
 
 	public Player(String name){
 		this.name = name;
 		this.level = 1;
 		this.goldCoins = 0L;
 		skills = new ArrayList<Skill>();
+		inventory = new ArrayList<Item>();
+		equipedItems = new Item[4]; //Weapon, armor, shield, boots
+		accumulatedWeight = 0;
 		baseStr = 5;
 		baseAgi = 5;
 		baseDex = 5;
@@ -112,4 +118,33 @@ class Player{
 	public void removeSkill(Skill s){
 		skills.remove(s);
 	}
+	public void addToInventory(Item i){
+		accumulatedWeight+= i.weight();
+		if(accumulatedWeight < 300){ //limite de peso do inventario, a estipular
+			inventory.add(i);
+		}
+		else{
+			accumulatedWeight-= i.weight();
+		}
+	}
+	public void removeFromInventory(Item i){
+		inventory.remove(i);
+		accumulatedWeight -= i.weight();
+	}
+	public void equipWeapon(Weapon w){ //weapons go to equipedItems[0]
+		if(!inventory.contains(w)){
+			return; //if the item is not on the inventory, gtfo
+		}
+		removeFromInventory(w); //we take the weapon from the inventory to free space
+		//we check if something is already equiped
+		if(equipedItems[0] != null){
+			inventory.add(equipedItems[0]);//and put it back on the inventory
+			if(equipedItems[0] instanceof Weapon){
+				baseStr -= equipedItems[0].increaseDamage(); //remove the damage bonus
+			}
+		}
+		baseStr += w.increaseDamage();
+		equipedItems[0] = w; // and finally equip the weapon. Should work.
+	}
+
 }
