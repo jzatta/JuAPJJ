@@ -21,7 +21,7 @@ public class GuilhermeTester{
 		p.addSkill(danoFisico);
 		Monster m = new Monster(ng.getName(),2);
 		Combat c = new Combat(p,m);
-		while (p.isAlive())
-			c.fight();
+		c.fight();
+	
 		}
-	}
+}

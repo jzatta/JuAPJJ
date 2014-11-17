@@ -48,7 +48,7 @@ public class Combat{ //implements ActionListener (futuramente)
 		return true;
 	}
 	public int getAction(){
-		int action;
+		int action= 1;
 		while(true){
 			System.out.println("What will "+player.getName()+" do?");
 			System.out.println("1.Fight\n2.Skill\n3.Item\n4.Run");
@@ -62,13 +62,13 @@ public class Combat{ //implements ActionListener (futuramente)
 				else{
 					break;
 				} 				
-				return action;
+				
 			}catch(InputMismatchException e){
 				System.out.println("Eu pedi um inteiro mano");
 			}
-
+	
 		}	
-		return -1; 
+		return action;
 	}
 	public void playerAttack(){
 		System.out.println("Enemy HP: "+monster.getHP());
