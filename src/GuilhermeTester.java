@@ -2,8 +2,9 @@ public class GuilhermeTester{
 	public static void main(String[] pao){
 		Player p = new Player("Guilérme");
 	 	NameGenerator ng = new NameGenerator();
-		String[] nouns = new String[]{"Henrizes","Chokito","Shogun","Alexis","Hazael","Elefante","Mauro","Truylio","Dracula","Fletes","Guntzel"};
-			String[] adjectives = new String[]{"Bobo","Feio","Tosco","Nojento","Gigante","Colossal","Maravilhoso","Fabuloso","Buffado"};
+		String[] nouns = 
+			new String[]{"Faustão","Henrizes","Chokito","Shogun","Alexis","Hazael","Elefante","Mauro","Truylio","Dracula","Pão","Passainho"};
+		String[] adjectives = new String[]{"Bobo","Feio","Tosco","Nojento","Gigante","Colossal","Maravilhoso","Fabuloso","Buffado","Glorioso"};
 		for(int i = 0; i < nouns.length; i++){
 			ng.addNoun(nouns[i]);
 		}
@@ -20,6 +21,7 @@ public class GuilhermeTester{
 		p.addSkill(danoFisico);
 		Monster m = new Monster(ng.getName(),2);
 		Combat c = new Combat(p,m);
-		c.fight();
+		while (p.isAlive())
+			c.fight();
+		}
 	}
-}

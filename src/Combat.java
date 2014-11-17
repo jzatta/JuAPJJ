@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.IOException;
 
 public class Combat{ //implements ActionListener (futuramente)
 	private Player player;
@@ -52,16 +53,22 @@ public class Combat{ //implements ActionListener (futuramente)
 			System.out.println("What will "+player.getName()+" do?");
 			System.out.println("1.Fight\n2.Skill\n3.Item\n4.Run");
 			Scanner input = new Scanner(System.in);
-			action = input.nextInt();
-			if(action < 1 || action > 4){
-				System.out.println("Invalid option");
-			}
-			else{
-				break;
-			}
+			try{
+				action = input.nextInt();
 			
-		}
-		return action;
+				if(action < 1 || action > 4){
+					System.out.println("Invalid option");
+				}
+				else{
+					break;
+				} 				
+				return action;
+			}catch(InputMismatchException e){
+				System.out.println("Eu pedi um inteiro mano");
+			}
+
+		}	
+		return -1; 
 	}
 	public void playerAttack(){
 		System.out.println("Enemy HP: "+monster.getHP());

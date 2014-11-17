@@ -14,8 +14,8 @@ class NameGenerator{
 	public String getName(){
 		int indNoun = (int)(Math.random() * nouns.size());
 		int indAdjectives = (int)(Math.random() * adjectives.size());
-		return nouns.get(indNoun) + adjectives.get(indAdjectives);
-	}
+			return nouns.get(indNoun) +" "+adjectives.get(indAdjectives);
+		}
 	public void addNoun(String noun){
 		nouns.add(noun);
 	}
