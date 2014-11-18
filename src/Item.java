@@ -7,5 +7,6 @@ interface Item{
 		// return buy price something like: valueOfItem * 1.2, same to sell(valueOfItem * 0.8). Verify to use an integer.
 	double sellPrice();
 	double weight();
+	int rarity(); //chance of finding the item on a chest or getting it from a monster
 	ItemTypes itemType();
 }

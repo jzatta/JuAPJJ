@@ -32,7 +32,7 @@ class Room{
 	GeneratedEvent getEvent(Scenario scene){
 		double mostChance = 0;
 		int arrayIndex = 0;
-		int makingDifficulty = (int)(Math.random() * this.variance) - ((this.variance + 1) / 2) + this.difficulty;
+		int makingDifficulty = (int)(Math.random() *Room.variance) - ((Room.variance + 1) / 2) + difficulty;//variavel estatica
 		if (makingDifficulty < 1){
 			makingDifficulty = 1;
 		}

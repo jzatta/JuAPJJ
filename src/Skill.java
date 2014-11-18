@@ -3,8 +3,10 @@ public class Skill{
 	private SkillTypes type;
 	private int skillFactor;
 	private String statToBuff;
+	private Console c;
 
 	public Skill(String name,SkillTypes type, int skillFactor){
+		c = new Console();
 		this.type = type;
 		this.name = name;
 		this.skillFactor = skillFactor;
@@ -35,7 +37,9 @@ public class Skill{
 	}
 	public void heal(Player p){
 		if(type == SkillTypes.HEALING){
-			p.heal(p.getIntl()*skillFactor);
+			int healAmt =p.getIntl()*skillFactor;
+			p.heal(healAmt);
+			c.showMessage("Healing "+healAmt+" HP");
 		}
 	
 	}
@@ -52,27 +56,27 @@ public class Skill{
 			switch(index){ 
 				case 0:
 					p.buffStr(skillFactor);
-					System.out.println("STR increased!");
+					c.showMessage("STR increased!");
 					break;
 				case 1:
 					p.buffAgi(skillFactor);
-					System.out.println("AGI increased!");
+					c.showMessage("AGI increased!");
 					break;
 				case 2:
 					p.buffDex(skillFactor);
-					System.out.println("DEX increased!");
+					c.showMessage("DEX increased!");
 					break;
 				case 3:
 					p.buffIntl(skillFactor);
-					System.out.println("INT increased!");
+					c.showMessage("INT increased!");
 					break;
 				case 4:
 					p.buffVit(skillFactor);
-					System.out.println("VIT increased!");
+					c.showMessage("VIT increased!");
 					break;
 				case 5:
 					p.buffLuck(skillFactor);
-					System.out.println("LUCK increased!");
+					c.showMessage("LUCK increased!");
 					break;
 				default:
 					break;
@@ -86,7 +90,7 @@ public class Skill{
 			int absoluteDamage = p.getIntl()*skillFactor;
 			int finalDamage = (int)(absoluteDamage - 0.25 * m.getIntl());
 			m.damageIgnoreArmor(finalDamage);
-			System.out.println("Magic damage: "+finalDamage);
+			c.showMessage("Magic damage: "+finalDamage);
 		}
 	}
 	public void physicalDamage(Player p, Monster m){
@@ -94,7 +98,7 @@ public class Skill{
 			int absoluteDamage = p.getStr()*skillFactor;
 			int finalDamage = (int)(absoluteDamage/Math.sqrt(m.getVit()));
 			m.damage(finalDamage);
-			System.out.println("Skill damage: "+finalDamage);
+			c.showMessage("Skill damage: "+finalDamage);
 		}
 	}
 	public String getName(){

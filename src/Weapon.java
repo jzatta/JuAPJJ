@@ -2,11 +2,13 @@ public class Weapon implements Item{
 	private int damageLevel;
 	private int minimumLevel; // level the Player must have to equip the weapon
 	private WeaponClass weaponClass;
+	private int rarity;
 
-	public Weapon(int damageLevel, int minimumLevel,WeaponClass weaponClass){
+	public Weapon(int damageLevel, int minimumLevel,WeaponClass weaponClass,int rarity){
 		this.damageLevel = damageLevel;
 		this.minimumLevel = minimumLevel;
 		this.weaponClass = weaponClass;
+		this.rarity = rarity;
 	}
 	public int reduceDamage(){
 		return 0;
@@ -19,6 +21,8 @@ public class Weapon implements Item{
 	}
 	public double sellPrice(){
 		return damageLevel*0.8; // multiplier for the buy price of the weapon
+		//TODO implement something that actually uses this price
+		//TODO use the item rarity in this calculation somehow
 	}
 	public double weight(){
 		switch(weaponClass){
@@ -38,6 +42,14 @@ public class Weapon implements Item{
 	public ItemTypes itemType(){
 		return ItemTypes.Weapon;
 	}
+	public int rarity(){
+		return rarity;
+	}
+	/*
+	   public Carregador emprestaACaneta(){
+	   	return carregador;
+	   }
+	  */
 }
 
 

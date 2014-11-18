@@ -1,9 +1,11 @@
-import java.io.File;
+import java.io.File;//a gente ainda precisa disso? 
 
 class Scenario{
 	NameGenerator roomNames;
 	
-	
+	public Scenario(NameGenerator n){ //constructor for test Purposes
+		roomNames = n;
+	}	
 	public Scenario(String templatesDir){
 		// Load templates from file
 	}
