@@ -19,7 +19,7 @@ class Room{
 		namesList = new ArrayList<NameGenerator>();
 	}
 	
-	String roomName(){
+	public String roomName(){
 		return this.localName;
 	}
 	
@@ -29,7 +29,7 @@ class Room{
 		Room.namesList.add(names);
 	}
 	
-	GeneratedEvent getEvent(Scenario scene){
+	GeneratedEvent getEvent(){
 		double mostChance = 0;
 		int arrayIndex = 0;
 		int makingDifficulty = (int)(Math.random() *Room.variance) - ((Room.variance + 1) / 2) + difficulty;//variavel estatica

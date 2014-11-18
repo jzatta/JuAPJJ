@@ -23,8 +23,13 @@ class Scenario{
 		return this.roomNames.getName();
 	}
 	
-	public NameGenerator namesListFor(GeneratedEvent toSearch) throws NameGeneratorFault{
-		return null;
+	public NameGenerator namesListFor(Class<?> toSearch) throws NameGeneratorFault{
+		NameGenerator q = new NameGenerator();
+		q.addNoun("bixo");
+		q.addNoun("elefante");
+		q.addAdjective("de sete pes, de comprimento");
+		q.addAdjective("branco");
+		return q;
 	}
 	
 	// TODO namesListFor

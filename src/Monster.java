@@ -19,7 +19,7 @@ class Monster implements GeneratedEvent{
 	}
 	
 	public void setupName(String name){
-		if (name == null){
+		if (this.name == null){
 			this.name = name;
 		}
 	}
@@ -92,11 +92,10 @@ class Monster implements GeneratedEvent{
 	}
 	
 	public static void addItselfRoom(Room room, Scenario scene, int potential){
-		Monster me = new Monster("",1);
 		try{
-		room.addGeneratedEvent(me.getClass(),scene.namesListFor(me),potential);
+			room.addGeneratedEvent(Monster.class,scene.namesListFor(Monster.class),potential);
 		} catch (Exception e){
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 

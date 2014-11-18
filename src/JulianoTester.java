@@ -1,9 +1,14 @@
 class JulianoTester{
 	public static void main(String[] args){
-// 		Room r = new Room("Sala teste",1);
-// 		Monster.addItselfRoom(r,1);
-// 		GeneratedEvent e = r.getEvent(null);
-// 		Monster m = (Monster)e;
-// 		System.out.println(m.dataDebug());
+		NameGenerator q = new NameGenerator();
+		q.addNoun("Sala");
+		q.addAdjective("do terror");
+		Scenario s = new Scenario(q);
+		Room r = s.getRoom(1);
+		System.out.println(r.roomName());
+		Monster.addItselfRoom(r,s,1);
+		GeneratedEvent e = r.getEvent();
+		Monster m = (Monster)e;
+		System.out.println(m.dataDebug());
 	}
 }
