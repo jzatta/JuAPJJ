@@ -1,11 +1,13 @@
 import java.util.*;
-import java.io.IOException;
+
 
 public class Combat{ //implements ActionListener (futuramente)
+	private IOManager console;
 	private Player player;
 	private Monster monster;
 
 	public Combat(Player p, Monster m){
+		console = new Console();
 		player = p;
 		monster = m;
 	}
@@ -50,39 +52,39 @@ public class Combat{ //implements ActionListener (futuramente)
 	public int getAction(){
 		int action= 1;
 		while(true){
-			System.out.println("What will "+player.getName()+" do?");
-			System.out.println("1.Fight\n2.Skill\n3.Item\n4.Run");
-			Scanner input = new Scanner(System.in);
+			console.showMessage("What will "+player.getName()+" do?");
+			console.showMessage("1.Fight\n2.Skill\n3.Item\n4.Run");
+			
 			try{
-				action = input.nextInt();
+				action = console.getCommand();
 			
 				if(action < 1 || action > 4){
-					System.out.println("Invalid option");
+					console.showMessage("Invalid option");
 				}
 				else{
 					break;
 				} 				
 				
 			}catch(InputMismatchException e){
-				System.out.println("Eu pedi um inteiro mano");
+				console.showMessage("Eu pedi um inteiro mano");
 			}
 	
 		}	
 		return action;
 	}
 	public void playerAttack(){
-		System.out.println("Enemy HP: "+monster.getHP());
+		console.showMessage("Enemy HP: "+monster.getHP());
 		int absoluteDamage = (int)(((Math.pow(player.getStr(),3) / 32) + 32) * 16 / 16);
 		int enemyDefense = (int)(((Math.pow(monster.getVit() - 280.4 ,2)/110)+16));
 		int finalDamage = (int)((absoluteDamage*enemyDefense/730)+Math.random()*5*player.getLuck());
 		boolean crit = playerCritTest();
 		if(crit){
 			finalDamage*=2;
-			System.out.println("Critical hit!");
+			console.showMessage("Critical hit!");
 		}
 		monster.damage(finalDamage);
-		System.out.println("Foe "+monster.getName()+" took "+finalDamage+" damage.");
-		System.out.println(monster.getName()+"'s hp is now "+monster.getHP());
+		console.showMessage("Foe "+monster.getName()+" took "+finalDamage+" damage.");
+		console.showMessage(monster.getName()+"'s hp is now "+monster.getHP());
 	}
 	public void playerSkill(){
 		List<Skill> playerSkills = player.listSkills();
@@ -90,9 +92,8 @@ public class Combat{ //implements ActionListener (futuramente)
 		for(int i = 0; i < playerSkills.size(); i++){
 			skillsList += i+1+"."+playerSkills.get(i).getName()+"\n";
 		}
-		System.out.println("Which skill?\n"+skillsList);
-		Scanner in = new Scanner(System.in);
-		int skillToBeUsed = in.nextInt()-1;
+		console.showMessage("Which skill?\n"+skillsList);
+		int skillToBeUsed = console.getCommand()-1;
 		useSkill(playerSkills.get(skillToBeUsed));
 	}
 	public void useSkill(Skill s){
@@ -128,7 +129,7 @@ public class Combat{ //implements ActionListener (futuramente)
 			int enemyDefense = (int)((Math.pow(monster.getVit()-280.4,2)/110)+16);
 			int finalDamage = (int)((absoluteDamage*enemyDefense/730)+Math.random()*5*player.getLuck());
 			player.damage(finalDamage);
-			System.out.println("You took "+finalDamage+" damage.");
+			console.showMessage("You took "+finalDamage+" damage.");
 			if(player.isAlive()){
 				return true;
 			}
