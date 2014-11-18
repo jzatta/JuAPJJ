@@ -1,0 +1,3 @@
+class NameGeneratorFault extends Exception{
+
+}

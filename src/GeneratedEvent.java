@@ -6,6 +6,6 @@ interface GeneratedEvent{
 	Item pickUpItem(int luck);
 	String getInteraction();
 	
-	void setuptScenario(Scenario scene);
+	void setupName(String name);
 	void setupLevel(int level);
 }

@@ -1,5 +1,4 @@
 interface Item{
-	
 	int reduceDamage();
 		// if equipped, can reduce damage suffered by player
 	int increaseDamage();
