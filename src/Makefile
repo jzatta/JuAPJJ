@@ -4,14 +4,19 @@ CROSS_TARGET_V=7
 CROSS_SOURCE_V=7
 OBJ:=$(subst .java,.class,$(shell find *.java))
 OBJ:=$(addprefix $(CLASSES_DIR)/,$(OBJ))
+LIBS=../lib/gson-2.3.jar
+CLASSES_PATH:=$(CLASSES_DIR):$(LIBS)
 
-JC=javac -d $(CLASSES_DIR) -source $(CROSS_SOURCE_V) -target $(CROSS_TARGET_V)
-JAVA=java -cp $(CLASSES_DIR)
+JC=javac -cp $(CLASSES_PATH) -sourcepath . -d $(CLASSES_DIR) -source $(CROSS_SOURCE_V) -target $(CROSS_TARGET_V)
+JAVA=java -cp $(CLASSES_PATH)
 
 all: $(OBJ)
 
 runJulianoTester: $(CLASSES_DIR)/JulianoTester.class
 	$(JAVA) JulianoTester
+
+runJohnaltanTester: $(CLASSES_DIR)/JohnaltanTester.class
+	$(JAVA) JohnaltanTester
 
 $(CLASSES_DIR)/%.class: %.java Makefile
 	$(JC) $<
