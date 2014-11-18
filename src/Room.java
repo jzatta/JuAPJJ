@@ -1,26 +1,32 @@
 import java.util.*;
 
 class Room{
+	private Scenario scene;
 	private String localName;
 	private int difficulty;
-	private List<Class<?>> classesList;
-	private List<Integer> potentialList;
+	private static List<Class<?>> classesList;
+	private static List<Integer> potentialList;
+	private static List<NameGenerator> namesList;
 	private static final int variance = 7;
 	
-	public Room(String roomName, int level){
-		this.localName = roomName;
+	
+	public Room(Scenario scene, int level, List<NameGenerator> namesList){
+		this.scene = scene;
+		this.localName = this.scene.getRoomName();
 		this.difficulty = level;
 		classesList = new ArrayList<Class<?>>();
 		potentialList = new ArrayList<Integer>();
+		this.namesList = namesList;
 	}
 	
 	String roomName(){
 		return this.localName;
 	}
 	
-	public void addGeneratedEvent(Class<?> classOf, int potential){
-		classesList.add(classOf);
-		potentialList.add(potential);
+	public static void addGeneratedEvent(Class<?> classOf, NameGenerator names, int potential){
+		Room.classesList.add(classOf);
+		Room.potentialList.add(potential);
+		Room.namesList.add(names);
 	}
 	
 	GeneratedEvent getEvent(Scenario scene){
@@ -40,11 +46,11 @@ class Room{
 		}
 		try{
 			GeneratedEvent event = (GeneratedEvent)classesList.get(arrayIndex).newInstance();
-			//event.setuptScenario(scene); scenario not full implemented yet
+			event.setupName(namesList.get(arrayIndex).getName());
 			event.setupLevel(makingDifficulty);
 			return event;
 		}catch(Exception e){
-			System.out.println("Exception: " + e);
+			e.printStackTrace();
 			return null;
 		}
 	}

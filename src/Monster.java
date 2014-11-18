@@ -5,13 +5,7 @@ class Monster implements GeneratedEvent{
 	private int str,agi,dex,intl,vit,luck;
 	private int armorLevel, weaponLevel;
 
-	
-	public Monster(Scenario scene, int level){
-		this.name = scene.getMonsterName();
-		this.level = level;
-		generateStats();
-	}
-	
+
 	public Monster(String name,int level){ //constructor only for test purposes
 		this.name = name;
 		this. level = level;
@@ -24,11 +18,12 @@ class Monster implements GeneratedEvent{
 		generateStats();
 	}
 	
-	public void setuptScenario(Scenario scene){
+	public void setupName(String name){
 		if (name == null){
-			scene.getMonsterName();
+			this.name = name;
 		}
 	}
+	
 	public void setupLevel(int level){
 		if (this.level == 0){
 			this.level = level;
@@ -96,8 +91,9 @@ class Monster implements GeneratedEvent{
 		return "You face " + this.name + ". It appears to be a level " + level + " monster.";
 	}
 	
-	public static void addItselfRoom(Room room, int potential){
-		room.addGeneratedEvent(new Monster("",1).getClass(),potential);
+	public static void addItselfRoom(Room room, Scenario scene, int potential){
+		Monster me = new Monster("",1);
+		room.addGeneratedEvent(me.getClass(),scene.namesListFor(me),potential);
 	}
 
 

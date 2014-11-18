@@ -1,15 +1,14 @@
 import java.io.File;
 
 class Scenario{
-	NameGenerator monsterNames;
-	NameGenerator itemNames;
 	NameGenerator roomNames;
 	
-	public Scenario(File templates){
+	
+	public Scenario(String templatesDir){
 		// Load templates from file
 	}
 	
-	public void reloadTemplates(File templates){
+	public void reloadTemplates(String templatesDir){
 		// Load a new template
 	}
 	
@@ -22,9 +21,9 @@ class Scenario{
 		return this.roomNames.getName();
 	}
 	
-	public String getMonsterName(){
-		return monsterNames.getName();
+	public NameGenerator namesListFor(GeneratedEvent toSearch) throws NameGeneratorFault{
+		
 	}
 	
-	// TODO methods and attributes to others types of names
+	// TODO namesListFor
 }
