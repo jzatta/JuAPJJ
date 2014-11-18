@@ -18,7 +18,7 @@ public class Weapon implements Item{
 		return 1.2*damageLevel; //the better the item, the more gold it costs
 	}
 	public double sellPrice(){
-		return buyPrice()*0.8; // multiplier for the buy price of the weapon
+		return damageLevel*0.8; // multiplier for the buy price of the weapon
 	}
 	public double weight(){
 		switch(weaponClass){
