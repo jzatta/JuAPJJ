@@ -10,13 +10,13 @@ class Room{
 	private static final int variance = 7;
 	
 	
-	public Room(Scenario scene, int level, List<NameGenerator> namesList){
+	public Room(Scenario scene, int level){
 		this.scene = scene;
 		this.localName = this.scene.getRoomName();
 		this.difficulty = level;
 		classesList = new ArrayList<Class<?>>();
 		potentialList = new ArrayList<Integer>();
-		this.namesList = namesList;
+		namesList = new ArrayList<NameGenerator>();
 	}
 	
 	String roomName(){

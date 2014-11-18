@@ -14,7 +14,7 @@ class Scenario{
 	
 	public Room getRoom(int level){
 		int makingDifficulty = (int)(Math.random() * 5) - 2 + level;
-		return new Room(getRoomName(),makingDifficulty);
+		return new Room(this,makingDifficulty);
 	}
 	
 	public String getRoomName(){
@@ -22,7 +22,7 @@ class Scenario{
 	}
 	
 	public NameGenerator namesListFor(GeneratedEvent toSearch) throws NameGeneratorFault{
-		
+		return null;
 	}
 	
 	// TODO namesListFor

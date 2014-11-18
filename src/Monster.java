@@ -93,7 +93,11 @@ class Monster implements GeneratedEvent{
 	
 	public static void addItselfRoom(Room room, Scenario scene, int potential){
 		Monster me = new Monster("",1);
+		try{
 		room.addGeneratedEvent(me.getClass(),scene.namesListFor(me),potential);
+		} catch (Exception e){
+		e.printStackTrace();
+		}
 	}
 
 
