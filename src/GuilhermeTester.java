@@ -35,13 +35,15 @@ public class GuilhermeTester{
 		p.addSkill(curaGenerica);
 		p.addSkill(danoMagico);
 		p.addSkill(danoFisico);
-		GeneratedEvent m = sala.getEvent(cena);
+		GeneratedEvent m = sala.getEvent();
+			buffDeStr.dataDebug();
 		if(m != null && m instanceof Monster){
 			Console console = new Console();
 			console.showMessage("You are in "+nomeSala);
 			Combat c = new Combat(p,(Monster)m);
 			c.fight();
 		}
+
 		
 	}
 }

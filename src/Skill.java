@@ -18,6 +18,7 @@ public class Skill{
 	//skill with the other constructor, and the statToBuff variable
 	//will remain null.
 	public Skill(String name, String statToBuff, int skillFactor){
+		c = new Console();
 		this.name = name;
 		this.type = SkillTypes.BUFFING;
 		this. skillFactor = skillFactor;
@@ -31,10 +32,10 @@ public class Skill{
 		if(validStat){
 			this.statToBuff = statToBuff;
 		}
-		else{
-			this.statToBuff = null; //lol NullPointerException
+		else
+			this.statToBuff = null;
 		}
-	}
+		
 	public void heal(Player p){
 		if(type == SkillTypes.HEALING){
 			int healAmt =p.getIntl()*skillFactor;
@@ -45,7 +46,7 @@ public class Skill{
 	}
 	public void buff(Player p){
 		if(type == SkillTypes.BUFFING){
-			statToBuff.toLowerCase();
+			statToBuff.toUpperCase();
 			String[] stats = new String[]{"STR","AGI","DEX","INTL","VIT","LUCK"};
 			int index = -1;
 			for(int i = 0; i < stats.length; i++){
@@ -106,6 +107,9 @@ public class Skill{
 	}
     public SkillTypes getSkillType(){
 		return type;
+	}
+	public void dataDebug(){
+		System.out.println(name+" "+type+" "+statToBuff);
 	}
 }	
 

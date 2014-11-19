@@ -18,6 +18,9 @@ runJulianoTester: $(CLASSES_DIR)/JulianoTester.class
 runJohnaltanTester: $(CLASSES_DIR)/JohnaltanTester.class
 	$(JAVA) JohnaltanTester
 
+runGuilhermeTester: $(CLASSES_DIR)/GuilhermeTester.class
+	$(JAVA) GuilhermeTester
+
 $(CLASSES_DIR)/%.class: %.java Makefile
 	$(JC) $<
 

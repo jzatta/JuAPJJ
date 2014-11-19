@@ -1,56 +1,56 @@
-	import java.util.*;
+		import java.util.*;
 
 
-public class Combat{ //implements ActionListener (futuramente)
-	private IOManager console;
-	private Player player;
-	private Monster monster;
+	public class Combat{ //implements ActionListener (futuramente)
+		private IOManager console;
+		private Player player;
+		private Monster monster;
 
-	public Combat(Player p, Monster m){
-		console = new Console();
-		player = p;
-		monster = m;
-	}
-	public void fight(){
-		System.out.println(monster.getInteraction());
-		boolean fighting = true;
-		boolean playerFirst = checkFirst();
-		while(fighting && player.isAlive() && monster.active()){
-			System.out.println("Your HP: "+player.getHP());
-			System.out.println("Enemy HP: "+monster.getHP());
-			if(playerFirst){
-				fighting = playerAction();
-				playerFirst = false;
+		public Combat(Player p, Monster m){
+			console = new Console();
+			player = p;
+			monster = m;
+		}
+		public void fight(){
+			System.out.println(monster.getInteraction());
+			boolean fighting = true;
+			boolean playerFirst = checkFirst();
+			while(fighting && player.isAlive() && monster.active()){
+				System.out.println("Your HP: "+player.getHP());
+				System.out.println("Enemy HP: "+monster.getHP());
+				if(playerFirst){
+					fighting = playerAction();
+					playerFirst = false;
+				}
+				if(monster.active() && fighting){
+					fighting = monsterAction();
+				} 
+				if(player.isAlive() && fighting){
+					fighting = playerAction();
+				}			
 			}
-			if(monster.active() && fighting){
-				fighting = monsterAction();
-			} 
-			if(player.isAlive() && fighting){
-				fighting = playerAction();
-			}			
+			player.resetStats(); //remove any buffs or debuffs the player has
+			System.out.println("End of battle"); //placeholder
 		}
-		player.resetStats(); //remove any buffs or debuffs the player has
-		System.out.println("End of battle"); //placeholder
-	}
-	public boolean playerAction(){ // futuro actionPerformed quando tiver GUI. 
-		int actionCommand = getAction();
-		if(actionCommand == 1){
-			playerAttack();
-		}
-		if(actionCommand == 2){
+		public boolean playerAction(){ // futuro actionPerformed quando tiver GUI. 
+			int actionCommand = getAction();
+			if(actionCommand == 1){
+				playerAttack();
+			}
+			if(actionCommand == 2){
 				playerSkill();
+			}
+			
+			if(actionCommand == 4){
+				return tryRun();
+			}
+			if(!monster.active()){
+				return false;
+			}
+			return true;
 		}
-		
-		if(actionCommand == 4){
-			return tryRun();
-		}
-		if(!monster.active()){
-			return false;
-		}
-		return true;
-	}
-	public int getAction(){
-		int action= 1;
+		public int getAction(){
+			int action= 1;
 		while(true){
 			console.showMessage("What will "+player.getName()+" do?");
 			console.showMessage("1.Fight\n2.Skill\n3.Item\n4.Run");
@@ -93,8 +93,8 @@ public class Combat{ //implements ActionListener (futuramente)
 			skillsList += i+1+"."+playerSkills.get(i).getName()+"\n";
 		}
 		console.showMessage("Which skill?\n"+skillsList);
-		int skillToBeUsed = console.getCommand()-1;
-		useSkill(playerSkills.get(skillToBeUsed));
+		int skillToBeUsed = console.getCommand();
+		useSkill(playerSkills.get(skillToBeUsed-1));
 	}
 	public void useSkill(Skill s){
 		SkillTypes type = s.getSkillType();
