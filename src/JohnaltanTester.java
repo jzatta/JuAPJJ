@@ -12,8 +12,14 @@ class JohnaltanTester{
 	public static void main(String[] args){
 		MyString s = new MyString("Ola");
 		Gson g = new Gson();
+		NameGenerator n1 = null;
 		NameGenerator n = g.fromJson("{nouns:[\"Nome1\",\"Nome2\"],adjectives:[\"Adj1\",\"Adj2\"]}",NameGenerator.class);
+		Scenario scene = new Scenario(".");
+		try{
+			n1 = scene.namesListFor(Monster.class);
+		}catch(Exception e){}
 		System.out.println(g.toJson(s));
 		System.out.println(n.getName());
+		System.out.println(n1.getName());
 	}
 }

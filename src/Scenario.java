@@ -1,12 +1,19 @@
-import java.io.File;//a gente ainda precisa disso? 
+import java.io.File;
+import java.io.FileReader;
+import com.google.gson.Gson;
+import java.util.Arrays;
 
 class Scenario{
 	NameGenerator roomNames;
+	private String templatesDir;
+	
 	
 	public Scenario(NameGenerator n){ //constructor for test Purposes
 		roomNames = n;
 	}	
+
 	public Scenario(String templatesDir){
+		this.templatesDir = templatesDir;
 		// Load templates from file
 	}
 	
@@ -24,12 +31,19 @@ class Scenario{
 	}
 	
 	public NameGenerator namesListFor(Class<?> toSearch) throws NameGeneratorFault{
-		NameGenerator q = new NameGenerator();
-		q.addNoun("bixo");
-		q.addNoun("elefante");
-		q.addAdjective("de sete pes, de comprimento");
-		q.addAdjective("branco");
-		return q;
+		File nameFile = new File(this.templatesDir+"/"+toSearch.getName()+"Names.json");
+		int charReaded;
+		StringBuilder jsonStr = new StringBuilder();
+		try{
+			FileReader reader = new FileReader(nameFile);
+			while( (charReaded = reader.read()) > 0){
+				jsonStr.append((char)charReaded);
+			}
+		}catch(Exception e){
+			System.out.println(e.getStackTrace());
+		}
+		Gson jsonConverter = new Gson();
+		return jsonConverter.fromJson(jsonStr.toString(),NameGenerator.class);
 	}
 	
 	// TODO namesListFor
