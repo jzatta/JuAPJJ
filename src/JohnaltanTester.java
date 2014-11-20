@@ -17,9 +17,11 @@ class JohnaltanTester{
 		Scenario scene = new Scenario(".");
 		try{
 			n1 = scene.namesListFor(Monster.class);
-		}catch(Exception e){}
+			System.out.println(n1.getName());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		System.out.println(g.toJson(s));
 		System.out.println(n.getName());
-		System.out.println(n1.getName());
 	}
 }

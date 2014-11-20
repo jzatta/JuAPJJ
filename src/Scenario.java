@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import com.google.gson.Gson;
 import java.util.Arrays;
 
@@ -30,18 +32,12 @@ class Scenario{
 		return this.roomNames.getName();
 	}
 	
-	public NameGenerator namesListFor(Class<?> toSearch) throws NameGeneratorFault{
+	public NameGenerator namesListFor(Class<?> toSearch) throws NameGeneratorFault, FileNotFoundException, IOException{
 		File nameFile = new File(this.templatesDir+"/"+toSearch.getName()+"Names.json");
 		int charReaded;
 		StringBuilder jsonStr = new StringBuilder();
-		try{
-			FileReader reader = new FileReader(nameFile);
-			while( (charReaded = reader.read()) > 0){
-				jsonStr.append((char)charReaded);
-			}
-		}catch(Exception e){
-			System.out.println(e.getStackTrace());
-		}
+		FileReader reader = new FileReader(nameFile);
+		while( (charReaded = reader.read()) > 0) jsonStr.append((char)charReaded);
 		Gson jsonConverter = new Gson();
 		return jsonConverter.fromJson(jsonStr.toString(),NameGenerator.class);
 	}
