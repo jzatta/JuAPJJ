@@ -12,10 +12,16 @@ class Scenario{
 	
 	public Scenario(NameGenerator n){ //constructor for test Purposes
 		roomNames = n;
+		this.templatesDir = ".";
 	}	
 
 	public Scenario(String templatesDir){
 		this.templatesDir = templatesDir;
+		try{
+			this.roomNames = namesListFor(Room.class);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		// Load templates from file
 	}
 	
