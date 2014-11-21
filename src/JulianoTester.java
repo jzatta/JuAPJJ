@@ -1,5 +1,5 @@
 class JulianoTester{
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		/*NameGenerator q = new NameGenerator();
 		q.addNoun("Sala");
 		q.addAdjective("do terror");

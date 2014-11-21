@@ -1,4 +1,4 @@
-public class Skill{
+interface Skill{
 	private String name;
 	private SkillTypes type;
 	private int skillFactor;
@@ -34,7 +34,7 @@ public class Skill{
 		}
 		else
 			this.statToBuff = null;
-		}
+	}
 		
 	public void heal(Player p){
 		if(type == SkillTypes.HEALING){

@@ -13,15 +13,11 @@ class Scenario{
 	public Scenario(NameGenerator n){ //constructor for test Purposes
 		roomNames = n;
 		this.templatesDir = ".";
-	}	
+	}
 
-	public Scenario(String templatesDir){
+	public Scenario(String templatesDir) throws FileNotFoundException, IOException{
 		this.templatesDir = templatesDir;
-		try{
-			this.roomNames = namesListFor(Room.class);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		this.roomNames = namesListFor(Room.class);
 		// Load templates from file
 	}
 	
@@ -38,7 +34,7 @@ class Scenario{
 		return this.roomNames.getName();
 	}
 	
-	public NameGenerator namesListFor(Class<?> toSearch) throws NameGeneratorFault, FileNotFoundException, IOException{
+	public NameGenerator namesListFor(Class<?> toSearch) throws FileNotFoundException, IOException{
 		File nameFile = new File(this.templatesDir+"/"+toSearch.getName()+"Names.json");
 		int charReaded;
 		StringBuilder jsonStr = new StringBuilder();
