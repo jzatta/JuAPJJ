@@ -4,7 +4,7 @@ class HealSkill implements Skill{
 	private int skillFactor;
 	private String statToBuff;
 	private Console c;
-
+//TODO MUDAR TUDO
 	public Skill(String name,SkillTypes type, int skillFactor){
 		c = new Console();
 		this.type = type;
