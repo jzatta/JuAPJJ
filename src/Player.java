@@ -1,7 +1,6 @@
 import java.util.*;
 
 class Player{
-	private long goldCoins;
 	private String name;
 	private int str,agi,dex,intl,vit,luck; //stats in combat
 	private int baseStr,baseAgi,baseDex,baseIntl,baseVit,baseLuck;//base stats
@@ -18,7 +17,6 @@ class Player{
 	public Player(String name){
 		this.name = name;
 		this.level = 1;
-		this.goldCoins = 0L;
 		skills = new ArrayList<Skill>();
 		inventory = new ArrayList<Item>();
 		equipedItems = new Item[4]; //Weapon, armor, shield, boots
@@ -158,20 +156,18 @@ class Player{
 		inventory.remove(i);
 		accumulatedWeight -= i.weight();
 	}
-/*	public void equipWeapon(Weapon w){ //weapons go to equipedItems[0]
+	public void equipWeapon(Item w){ //weapons go to equipedItems[0]
 		if(!inventory.contains(w)){
 			return; //if the item is not on the inventory, gtfo
 		}
 		removeFromInventory(w); //we take the weapon from the inventory to free space
 		//we check if something is already equiped
 		if(equipedItems[0] != null){
-			inventory.add(equipedItems[0]);//and put it back on the inventory
-			if(equipedItems[0] instanceof Weapon){
-				baseStr -= equipedItems[0].increaseDamage(); //remove the damage bonus
-			}
+			inventory.add(equipedItems[0]);//and put it back on the inventory			
+			baseStr -= equipedItems[0].increaseDamage(); //remove the damage bonus			
 		}
 		baseStr += w.increaseDamage();
 		equipedItems[0] = w; // and finally equip the weapon. Should work.
 	}
-*/
+
 }

@@ -24,35 +24,34 @@ class BuffSkill implements Skill{
 		
 	public void useSkill(Player p, Monster m){
 		statToBuff.toUpperCase();
-		String[] stats = new String[]{"STR","AGI","DEX","INTL","VIT","LUCK"};
-		int index = -1;
-		for(int i = 0; i < stats.length; i++){
-			if(statToBuff.equalsIgnoreCase(stats[i])){
-				index = i;
+		Stats toBuff;
+		for(Stats s: Stats.values()){
+			if(statToBuff.equalsIgnoreCase(s.name())){
+				toBuff = s;
 			}
-		} //se tivesse um enum de stats, não precisava desse for. Porém, preguiça
-		switch(index){ 
-			case 0:
+		}
+			switch(toBuff){ 
+			case STR:
 				p.buffStr(skillFactor);
 				c.showMessage("STR increased!");
 				break;
-			case 1:
+			case AGI:
 				p.buffAgi(skillFactor);
 				c.showMessage("AGI increased!");
 				break;
-			case 2:
+			case DEX:
 				p.buffDex(skillFactor);
 				c.showMessage("DEX increased!");
 				break;
-			case 3:
+			case INTL:
 				p.buffIntl(skillFactor);
 				c.showMessage("INT increased!");
 				break;
-			case 4:
+			case VIT:
 				p.buffVit(skillFactor);
 				c.showMessage("VIT increased!");
 				break;
-			case 5:
+			case LUCK:
 				p.buffLuck(skillFactor);
 				c.showMessage("LUCK increased!");
 				break;
