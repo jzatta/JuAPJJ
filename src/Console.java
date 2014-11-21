@@ -17,4 +17,7 @@ public class Console implements IOManager{
 	public void showMessage(String message){
 		System.out.println(message);
 	}
+	public String promptForString(String message){
+		return input.nextLine();
+	}
 }

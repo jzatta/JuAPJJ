@@ -2,7 +2,7 @@ class BuffSkill implements Skill{
 	private String name;
 	private int skillFactor;
 	private String statToBuff;
-	private Console c;
+	private IOManager c;
 
 	public BuffSkill(String name, String statToBuff, int skillFactor){
 		c = new Console();

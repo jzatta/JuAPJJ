@@ -49,12 +49,6 @@ class Player{
 		}
 		return false;
 	} 
-	public void setStr(int str){ this.str = str; }
-	public void setAgi(int agi){ this.agi = agi; }
-	public void setDex(int dex){ this.dex = dex; }
-	public void setIntl(int intl){ this.intl = intl; }
-	public void setVit(int vit){ this.vit = vit; }
-	public void setLuck(int luck){ this.luck = luck; }
 	
 	public int getStr(){ return str; }
 	public int getAgi(){ return agi;}
@@ -72,6 +66,7 @@ class Player{
 
 	public void levelUp(){
 		level++;
+		increaseStats();
 		calculateHpSp();
 	}
 	public void damage(int d){
@@ -93,6 +88,38 @@ class Player{
 		intl = baseIntl;
 		vit = baseVit;
 		luck = baseLuck;
+	}
+	public void increaseStats(){
+		Console c = new Console();
+		Stats toIncrease;
+		String statToIncrease = c.promptForString("Level up! Which stat to increase?(STR,AGI,DEX,INTL,VIT,LUCK)");
+		for(Stats stat:Stats.values()){
+			if(statToIncrease.equalsIgnoreCase(stat.name())){
+				toIncrease = stat;
+			}
+		}
+		switch(toIncrease){
+			case STR:
+				str+=3;
+				break;
+			case AGI:
+				agi+=3;
+				break;
+			case DEX:
+				dex+=3;
+				break;
+			case INTL:
+				intl+=3;
+				break;
+			case VIT:
+				vit+=3;
+				break;
+			case LUCK:
+				luck+=3;
+				break;
+			default:
+				break;
+		}
 	}
 	public void buffStr(int factor){
 		str+= factor;
@@ -131,7 +158,7 @@ class Player{
 		inventory.remove(i);
 		accumulatedWeight -= i.weight();
 	}
-	public void equipWeapon(Weapon w){ //weapons go to equipedItems[0]
+/*	public void equipWeapon(Weapon w){ //weapons go to equipedItems[0]
 		if(!inventory.contains(w)){
 			return; //if the item is not on the inventory, gtfo
 		}
@@ -146,5 +173,5 @@ class Player{
 		baseStr += w.increaseDamage();
 		equipedItems[0] = w; // and finally equip the weapon. Should work.
 	}
-
+*/
 }
