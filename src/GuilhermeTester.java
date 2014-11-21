@@ -27,16 +27,16 @@ public class GuilhermeTester{
 		Room sala = cena.getRoom(1);
 		String nomeSala = cena.getRoomName();
 		Room.addGeneratedEvent(Monster.class,ng,2132);
-		Skill buffDeStr = new Skill("Buff de STR","STR",5);
-		Skill curaGenerica = new Skill("Cura tosca",SkillTypes.HEALING,50);
-		Skill danoMagico = new Skill("Fogo no rabo",SkillTypes.MAGICDAMAGE,20);
-		Skill danoFisico = new Skill("Tacar o piru",SkillTypes.PHYSICALDAMAGE,35);
+		Skill buffDeStr = new BuffSkill("Buff de STR","STR",5);
+		Skill curaGenerica = new HealSkill("Cura tosca",SkillTypes.HEALING,50);
+		Skill danoMagico = new MagicDamageSkill("Fogo no rabo",SkillTypes.MAGICDAMAGE,20);
+		Skill danoFisico = new PhysicalDamageSkill(35);
 		p.addSkill(buffDeStr);
 		p.addSkill(curaGenerica);
 		p.addSkill(danoMagico);
 		p.addSkill(danoFisico);
 		GeneratedEvent m = sala.getEvent();
-			buffDeStr.dataDebug();
+			//buffDeStr.dataDebug();
 		if(m != null && m instanceof Monster){
 			Console console = new Console();
 			console.showMessage("You are in "+nomeSala);

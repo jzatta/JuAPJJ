@@ -27,11 +27,17 @@ class Master {
 // // 		}
 // // 	}
 	
-	public static void main(String[] elefanteAzul){
+	public static void main(String[] args){
 	//	Master m = new Master(new File("/"));
-		Player p = new Player("Sr. Cobaia");
-		Monster m = new Monster("Monstro Gigante de Lava com Chifres",1);
-		Combat c = new Combat(p,m);
-		c.fight();
+		try{
+			Scenario scene = new Scenario(".");
+			Player p = new Player("Sr. Cobaia");
+			Room room = new Room(scene,p.getLevel());
+			Monster m = (Monster)room.getEvent();
+			Combat c = new Combat(p,m);
+			c.fight();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

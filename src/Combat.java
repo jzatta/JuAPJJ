@@ -89,14 +89,14 @@ public class Combat{ //implements ActionListener (futuramente)
 		List<Skill> playerSkills = player.listSkills();
 		String skillsList = "";
 		for(int i = 0; i < playerSkills.size(); i++){
-			skillsList += i+1+"."+playerSkills.get(i).getName()+"\n";
+			skillsList += i+1+"."+playerSkills.get(i).skillName()+"\n";
 		}
 		console.showMessage("Which skill?\n"+skillsList);
 		int skillToBeUsed = console.getCommand();
-		useSkill(playerSkills.get(skillToBeUsed-1));
+		receiveSkill(playerSkills.get(skillToBeUsed-1));
 	}
-	public void useSkill(Skill s){
-		SkillTypes type = s.getSkillType();
+	public void receiveSkill(Skill s){
+		/*SkillTypes type = s.getSkillType();
 		switch(type){
 			case HEALING:
 				s.heal(player);
@@ -114,7 +114,8 @@ public class Combat{ //implements ActionListener (futuramente)
 				System.out.println("Enemy's HP: "+monster.getHP());
 				break;
 
-		}
+		}*/
+		s.useSkill(player,monster);
 	}
 	public boolean tryRun(){
 		int runTest = (int)(Math.random()*100 - player.getLuck());

@@ -14,8 +14,8 @@ class JohnaltanTester{
 		Gson g = new Gson();
 		NameGenerator n1 = null;
 		NameGenerator n = g.fromJson("{nouns:[\"Nome1\",\"Nome2\"],adjectives:[\"Adj1\",\"Adj2\"]}",NameGenerator.class);
-		Scenario scene = new Scenario(".");
 		try{
+			Scenario scene = new Scenario(".");
 			n1 = scene.namesListFor(Monster.class);
 			System.out.println(n1.getName());
 		}catch(Exception e){

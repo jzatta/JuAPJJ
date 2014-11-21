@@ -1,4 +1,4 @@
 interface Skill{
 	public String skillName();
-	public void useSkill(Combat c);
+	public void useSkill(Player p, Monster m);
 }
