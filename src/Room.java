@@ -1,7 +1,6 @@
 import java.util.*;
 
 class Room{
-	private Scenario scene;
 	private String localName;
 	private int difficulty;
 	private static List<Class<?>> classesList;
@@ -11,8 +10,7 @@ class Room{
 	
 	
 	public Room(Scenario scene, int level){
-		this.scene = scene;
-		this.localName = this.scene.getRoomName();
+		this.localName = scene.getRoomName();
 		this.difficulty = level;
 		classesList = new ArrayList<Class<?>>();
 		potentialList = new ArrayList<Integer>();
