@@ -43,6 +43,17 @@ class Scenario{
 		Gson jsonConverter = new Gson();
 		return jsonConverter.fromJson(jsonStr.toString(),NameGenerator.class);
 	}
+
+	public History getHistory() throws FileNotFoundException, IOException{
+		File nameFile = new File(this.templatesDir+"/"+"History.json");
+			int charReaded;
+		StringBuilder jsonStr = new StringBuilder();
+		FileReader reader = new FileReader(nameFile);
+		while( (charReaded = reader.read()) > 0) jsonStr.append((char)charReaded);
+		Gson jsonConverter = new Gson();
+		System.out.println(jsonStr.toString());
+		return jsonConverter.fromJson(jsonStr.toString(),History.class);
+	}
 	
 	// TODO namesListFor
 }

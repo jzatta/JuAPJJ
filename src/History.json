@@ -1,0 +1,14 @@
+{	context:[
+		{
+			plot:"Você acaba de nascer, mas muitos desafios podem já acontecer!",
+			eventNames:["Monster"],
+			evtPotentials:[1]
+		},
+		{
+			plot:"É a universidade não é assim tão simples, enfrente mais isto",
+			eventNames:["Monster"],
+			evtPotentials:[1]
+		}
+	],
+	index:0
+}

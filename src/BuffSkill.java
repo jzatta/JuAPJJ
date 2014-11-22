@@ -24,7 +24,7 @@ class BuffSkill implements Skill{
 		
 	public void useSkill(Player p, Monster m){
 		statToBuff.toUpperCase();
-		Stats toBuff;
+		Stats toBuff = null;
 		for(Stats s: Stats.values()){
 			if(statToBuff.equalsIgnoreCase(s.name())){
 				toBuff = s;

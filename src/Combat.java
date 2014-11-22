@@ -115,7 +115,7 @@ public class Combat{ //implements ActionListener (futuramente)
 				break;
 
 		}*/
-		s.useSkill(player,monster);
+		s.useSkill(player,monster); //Verificar onde mostrar mensagens de saida comentadas
 	}
 	public boolean tryRun(){
 		int runTest = (int)(Math.random()*100 - player.getLuck());

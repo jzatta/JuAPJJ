@@ -89,7 +89,7 @@ class Player{
 	}
 	public void increaseStats(){
 		Console c = new Console();
-		Stats toIncrease;
+		Stats toIncrease = null;
 		String statToIncrease = c.promptForString("Level up! Which stat to increase?(STR,AGI,DEX,INTL,VIT,LUCK)");
 		for(Stats stat:Stats.values()){
 			if(statToIncrease.equalsIgnoreCase(stat.name())){

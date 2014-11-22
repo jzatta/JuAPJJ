@@ -32,10 +32,19 @@ class Master {
 		try{
 			Scenario scene = new Scenario(".");
 			Player p = new Player("Sr. Cobaia");
-			Room room = new Room(scene,p.getLevel());
-			Monster m = (Monster)room.getEvent();
-			Combat c = new Combat(p,m);
-			c.fight();
+			History history = scene.getHistory();
+			//history.eventsNames();
+			do{
+				Room room = new Room(scene,p.getLevel());
+				for(int i = 0; i < history.context().eventNames().size(); i++){
+					Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
+					room.addGeneratedEvent(genClass,scene.namesListFor(genClass),history.context().evtPotentials().get(i));
+				}
+				System.out.println(history.context().plot());
+				GeneratedEvent evt = room.getEvent();
+				Combat c = new Combat(p,(Monster)evt);
+				c.fight();
+			} while(history.hasContext());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
