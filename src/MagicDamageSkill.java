@@ -1,13 +1,11 @@
 class MagicDamageSkill implements Skill{
 	private String name;
-	private SkillTypes type;
 	private int skillFactor;
 	private String statToBuff;
 //	private Console c;
 
-	public MagicDamageSkill(String name,SkillTypes type, int skillFactor){
+	public MagicDamageSkill(String name, int skillFactor){
 //		c = new Console();
-		this.type = type;
 		this.name = name;
 		this.skillFactor = skillFactor;
 	}

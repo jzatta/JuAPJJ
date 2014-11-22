@@ -28,8 +28,8 @@ public class GuilhermeTester{
 		String nomeSala = cena.getRoomName();
 		Room.addGeneratedEvent(Monster.class,ng,2132);
 		Skill buffDeStr = new BuffSkill("Buff de STR","STR",5);
-		Skill curaGenerica = new HealSkill("Cura tosca",SkillTypes.HEALING,50);
-		Skill danoMagico = new MagicDamageSkill("Fogo no rabo",SkillTypes.MAGICDAMAGE,20);
+		Skill curaGenerica = new HealSkill("Cura tosca",50);
+		Skill danoMagico = new MagicDamageSkill("Fogo no rabo",20);
 		Skill danoFisico = new PhysicalDamageSkill(35);
 		p.addSkill(buffDeStr);
 		p.addSkill(curaGenerica);

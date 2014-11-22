@@ -23,5 +23,8 @@ class JohnaltanTester{
 		}
 		System.out.println(g.toJson(s));
 		System.out.println(n.getName());
+		GUI gui = new GUI();
+		gui.showMessage(Integer.toString(gui.getCommand()));
+		System.out.println("Ola");
 	}
 }

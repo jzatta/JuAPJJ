@@ -3,7 +3,7 @@ class HealSkill implements Skill{
 	private int skillFactor;
 	private Console c;
 
-	public HealSkill(String name,SkillTypes type, int skillFactor){
+	public HealSkill(String name, int skillFactor){
 		c = new Console();
 		this.name = name;
 		this.skillFactor = skillFactor;
