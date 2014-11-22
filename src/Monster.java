@@ -1,4 +1,4 @@
-class Monster implements GeneratedEvent{
+class Monster implements GeneratedEvent, Interable{
 	private String name;
 	private int level;
 	private int health;
@@ -97,6 +97,11 @@ class Monster implements GeneratedEvent{
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	public void interacts(Player p){
+		Combat c = new Combat(p,this);
+		c.fight();
 	}
 
 

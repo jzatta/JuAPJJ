@@ -8,4 +8,5 @@ interface GeneratedEvent{
 	
 	void setupName(String name);
 	void setupLevel(int level);
+	void interacts(Player player);
 }
