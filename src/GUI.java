@@ -75,11 +75,10 @@ class GUI implements IOManager, ActionListener{
 		return readedCommand;
 	}
 	public void showMessage(String m){
-		textArea.setText(m);
+		textArea.append(m + "\n");
 	}
 	public void actionPerformed(ActionEvent evt){
 		String cmd = evt.getActionCommand();
-		System.out.println(cmd);
 		if(cmd.equals("F1")) command = 1;
 		else if(cmd.equals("F2")) command = 2;
 		else if(cmd.equals("F3")) command = 3;

@@ -23,13 +23,18 @@ class Master {
 // // 	public void run(){
 // // 		while (player.alive()){
 // // 			event = room.getEvent(this.scene);
-// // 			System.out.println(event.getInteraction() + " What will you do?");
+// // 			ioManager.showMessage(event.getInteraction() + " What will you do?");
 // // 		}
 // // 	}
 	
 	public static void main(String[] args){
 	//	Master m = new Master(new File("/"));
 		try{
+			IOManager ioManager = new Console();
+			if(args.length > 0 && args[0].equals("g")) {
+				ioManager = new GUI();
+			}
+			ioManager.showMessage(ioManager.getClass().getName());
 			Scenario scene = new Scenario(".");
 			Player p = new Player("Sr. Cobaia");
 			History history = scene.getHistory();
@@ -40,9 +45,9 @@ class Master {
 					Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
 					room.addGeneratedEvent(genClass,scene.namesListFor(genClass),history.context().evtPotentials().get(i));
 				}
-				System.out.println(history.context().plot());
+				ioManager.showMessage(history.context().plot());
 				GeneratedEvent evt = room.getEvent();
-				Combat c = new Combat(p,(Monster)evt);
+				Combat c = new Combat(ioManager,p,(Monster)evt);
 				c.fight();
 			} while(history.hasContext());
 		}catch(Exception e){

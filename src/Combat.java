@@ -5,18 +5,18 @@ public class Combat{ //implements ActionListener (futuramente)
 	private Player player;
 	private Monster monster;
 
-	public Combat(Player p, Monster m){
-		console = new Console();
+	public Combat(IOManager c, Player p, Monster m){
+		console = c;
 		player = p;
 		monster = m;
 	}
 	public void fight(){
-		System.out.println(monster.getInteraction());
+		console.showMessage(monster.getInteraction());
 		boolean fighting = true;
 		boolean playerFirst = checkFirst();
 		while(fighting && player.isAlive() && monster.active()){
-			System.out.println("Your HP: "+player.getHP());
-			System.out.println("Enemy HP: "+monster.getHP());
+			console.showMessage("Your HP: "+player.getHP());
+			console.showMessage("Enemy HP: "+monster.getHP());
 			if(playerFirst){
 				fighting = playerAction();
 				playerFirst = false;
@@ -29,7 +29,7 @@ public class Combat{ //implements ActionListener (futuramente)
 			}			
 		}
 		player.resetStats(); //remove any buffs or debuffs the player has
-		System.out.println("End of battle"); //placeholder
+		console.showMessage("End of battle"); //placeholder
 	}
 	public boolean playerAction(){ // futuro actionPerformed quando tiver GUI. 
 		int actionCommand = getAction();
@@ -100,18 +100,18 @@ public class Combat{ //implements ActionListener (futuramente)
 		switch(type){
 			case HEALING:
 				s.heal(player);
-				System.out.println("Your HP is now "+player.getHP());
+				console.showMessage("Your HP is now "+player.getHP());
 				break;
 			case BUFFING:
 				s.buff(player);
 				break;
 			case PHYSICALDAMAGE:
 				s.physicalDamage(player,monster);
-				System.out.println("Foe "+monster.getName()+"'s HP is now "+monster.getHP());
+				console.showMessage("Foe "+monster.getName()+"'s HP is now "+monster.getHP());
 				break;
 			case MAGICDAMAGE:
 				s.magicDamage(player,monster);
-				System.out.println("Enemy's HP: "+monster.getHP());
+				console.showMessage("Enemy's HP: "+monster.getHP());
 				break;
 
 		}*/
