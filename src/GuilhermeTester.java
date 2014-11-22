@@ -40,7 +40,7 @@ public class GuilhermeTester{
 		if(m != null && m instanceof Monster){
 			Console console = new Console();
 			console.showMessage("You are in "+nomeSala);
-			Combat c = new Combat(p,(Monster)m);
+			Combat c = new Combat(new Console(),p,(Monster)m);
 			c.fight();
 		}
 

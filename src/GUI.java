@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import javax.swing.JOptionPane;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
@@ -73,6 +74,9 @@ class GUI implements IOManager, ActionListener{
 		readedCommand = command;
 		command = -1;
 		return readedCommand;
+	}
+	public String getString(String title){
+		return JOptionPane.showInputDialog(title);
 	}
 	public void showMessage(String m){
 		textArea.append(m + "\n");

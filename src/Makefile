@@ -22,7 +22,7 @@ runGuilhermeTester: $(CLASSES_DIR)/GuilhermeTester.class
 	$(JAVA) GuilhermeTester
 
 run: $(OBJ)
-	$(JAVA) Master $(ARGS)
+	$(JAVA) Main $(ARGS)
 
 $(CLASSES_DIR)/%.class: %.java Makefile
 	$(JC) $<

@@ -14,6 +14,10 @@ public class Console implements IOManager{
 		int command = input.nextInt();
 		return command;
 	}
+	public String getString(String title){
+		showMessage(title);
+		return input.next();
+	}
 	public void showMessage(String message){
 		System.out.println(message);
 	}
