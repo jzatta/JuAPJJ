@@ -42,6 +42,7 @@ class Master {
 	public void run(){
 		try{
 			while(initialMenu()){
+				history.reset();
 				do{
 					Room room = new Room(scene,p.getLevel());
 					for(int i = 0; i < history.context().eventNames().size(); i++){
