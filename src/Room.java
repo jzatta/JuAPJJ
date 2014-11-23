@@ -1,16 +1,20 @@
 import java.util.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-class Room{
+class Room implements Nameable{
 	private String localName;
 	private int difficulty;
 	private static List<Class<?>> classesList;
 	private static List<Integer> potentialList;
 	private static List<NameGenerator> namesList;
 	private static final int variance = 7;
+	private static NameGenerator roomNames = null;
 	
 	
-	public Room(Scenario scene, int level){
-		this.localName = scene.getRoomName();
+	public Room(Namer namer, int level) throws FileNotFoundException, IOException{
+		namer.addNameable(this);
+		this.localName = roomNames.getName();
 		this.difficulty = level;
 		classesList = new ArrayList<Class<?>>();
 		potentialList = new ArrayList<Integer>();
@@ -19,6 +23,9 @@ class Room{
 	
 	public String roomName(){
 		return this.localName;
+	}
+	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
+		Room.roomNames = namer.namesListFor(Room.class);
 	}
 	
 	public void addGeneratedEvent(Class<?> classOf, NameGenerator names, int potential){

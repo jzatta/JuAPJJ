@@ -84,20 +84,21 @@ class Master {
 		try{
 			while(initialMenu()){
 				do{
-					Room room = new Room(scene,player.getLevel());
+					Room room = scene.generateRoom(player.getLevel());
 					for(int i = 0; i < history.context().eventNames().size(); i++){
 						Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
 						int potential = history.context().evtPotentials().get(i);
 						GeneratedEvent genEvt = genClass.newInstance();
 						scene.addNameable((Nameable)genEvt);
 						genEvt.addItselfRoom(room,potential);
-						//room.addGeneratedEvent(genClass,scene.namesListFor(genClass),history.context().evtPotentials().get(i));
 					}
+					ioManager.showMessage("You are now in room " + room.roomName());
 					ioManager.showMessage(history.context().plot());
 					room.getEvent().interacts(player);
 					saveGame();
 				}while(history.hasContext() && player.isAlive());
 			}
+			System.exit(0);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

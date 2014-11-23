@@ -6,13 +6,11 @@ import com.google.gson.Gson;
 import java.util.*;
 
 class Scenario implements Namer{
-	NameGenerator roomNames;
 	private String templatesDir;
 	private List<Class<Nameable>> nameablesClasses;
 	
 	
-	public Scenario(NameGenerator n){ //constructor for test Purposes
-		roomNames = n;
+	public Scenario(){ //constructor for test Purposes
 		this.templatesDir = ".";
 		nameablesClasses = new ArrayList<Class<Nameable>>();
 	}
@@ -29,7 +27,6 @@ class Scenario implements Namer{
 
 	public Scenario(String templatesDir) throws FileNotFoundException, IOException{
 		this.templatesDir = templatesDir;
-		this.roomNames = namesListFor(Room.class);
 		nameablesClasses = new ArrayList<Class<Nameable>>();
 		// Load templates from file
 	}
@@ -38,13 +35,9 @@ class Scenario implements Namer{
 		// Load a new template
 	}
 	
-	public Room getRoom(int level){
+	public Room generateRoom(int level) throws FileNotFoundException, IOException{
 		int makingDifficulty = (int)(Math.random() * 5) - 2 + level;
 		return new Room(this,makingDifficulty);
-	}
-	
-	public String getRoomName(){
-		return this.roomNames.getName();
 	}
 	
 	public NameGenerator namesListFor(Class<?> toSearch) throws FileNotFoundException, IOException{
