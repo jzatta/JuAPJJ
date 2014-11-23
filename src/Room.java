@@ -21,7 +21,7 @@ class Room{
 		return this.localName;
 	}
 	
-	public static void addGeneratedEvent(Class<?> classOf, NameGenerator names, int potential){
+	public void addGeneratedEvent(Class<?> classOf, NameGenerator names, int potential){
 		Room.classesList.add(classOf);
 		Room.potentialList.add(potential);
 		Room.namesList.add(names);

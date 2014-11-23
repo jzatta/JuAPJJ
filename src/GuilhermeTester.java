@@ -26,7 +26,7 @@ public class GuilhermeTester{
 		Scenario cena = new Scenario(roomNames);
 		Room sala = cena.getRoom(1);
 		String nomeSala = cena.getRoomName();
-		Room.addGeneratedEvent(Monster.class,ng,2132);
+		sala.addGeneratedEvent(Monster.class,ng,2132);
 		Skill buffDeStr = new BuffSkill("Buff de STR","STR",5);
 		Skill curaGenerica = new HealSkill("Cura tosca",50);
 		Skill danoMagico = new MagicDamageSkill("Fogo no rabo",20);
