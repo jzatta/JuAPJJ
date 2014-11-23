@@ -1,60 +1,45 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.JOptionPane;
-import javax.swing.BoxLayout;
-import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-class GUI implements IOManager, ActionListener{
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class GUI implements IOManager, ActionListener{
 	private JFrame window;
 	private JPanel pane;
+	private JScrollPane scrollPane;
 	JTextArea textArea;
 	int command;
 	boolean hasCommand;
 	public GUI(){
-		window = new JFrame();
+		window = new JFrame("JUAPJJ v.0.1 Alpha");
 		pane = new JPanel();
-		textArea = new JTextArea(200,100);
+		textArea = new JTextArea();
+		scrollPane= new JScrollPane(textArea);
 		command = -1;
 		launchGUI();
 	}
 	private void launchGUI(){
-		//pane.setPreferredSize(new Dimension(400,500));
-		pane.setLayout(new BorderLayout());
-		JPanel textPanel, buttonPanel, c3;
-		textPanel = new JPanel();
-		pane.add(textPanel,BorderLayout.WEST);
-		buttonPanel = new JPanel();
-		buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.Y_AXIS));
-		c3 = new JPanel();
-		c3.setLayout(new BorderLayout());
-		c3.add(buttonPanel,BorderLayout.CENTER);
-		pane.add(c3,BorderLayout.EAST);
-		
+		pane.setLayout(new	BorderLayout());
+		scrollPane.setPreferredSize(new Dimension(700,500));
+		pane.add(scrollPane,BorderLayout.NORTH);
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(0,4));
+		pane.add(buttonPanel);
 		textArea.setEditable(false);
-		textPanel.add(textArea);
-
+		pane.add(buttonPanel,BorderLayout.SOUTH);
 		JButton b = new JButton("F1");
 		b.addActionListener(this);
 		b.setActionCommand(b.getText());
 		buttonPanel.add(b);
-		
 		b = new JButton("F2");
 		b.addActionListener(this);
 		b.setActionCommand(b.getText());
 		buttonPanel.add(b);
-		
 		b = new JButton("F3");
 		b.addActionListener(this);
 		b.setActionCommand(b.getText());
 		buttonPanel.add(b);
-		
 		b = new JButton("F4");
 		b.addActionListener(this);
-		b.setActionCommand(b.getText());
+		b.setActionCommand(b.getText());	
 		buttonPanel.add(b);
 		window.setContentPane(pane);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
