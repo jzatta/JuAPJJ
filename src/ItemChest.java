@@ -34,7 +34,7 @@ public class ItemChest implements GeneratedEvent, Nameable{
 	
 	public void addItselfRoom(Room room, int potential){
 		try{
-			room.addGeneratedEvent(ItemChest.class,null,potential);
+			room.addGeneratedEvent(ItemChest.class,ItemChest.itemChestNames,potential);
 		} catch (Exception e){
 			e.printStackTrace();
 		}

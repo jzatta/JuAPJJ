@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-class Item{
+class Item implements java.io.Serializable{
 	private String name;
 	private int attack, defense;
 	private static NameGenerator itemNames;
