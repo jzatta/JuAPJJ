@@ -8,30 +8,29 @@ import java.util.*;
 class Scenario implements Namer{
 	NameGenerator roomNames;
 	private String templatesDir;
-	private List<Nameable> nameables;
+	private List<Class<Nameable>> nameablesClasses;
 	
 	
 	public Scenario(NameGenerator n){ //constructor for test Purposes
 		roomNames = n;
 		this.templatesDir = ".";
-		nameables = new ArrayList<Nameable>();
+		nameablesClasses = new ArrayList<Class<Nameable>>();
 	}
 
 	public boolean addNameable(Nameable nameable) throws FileNotFoundException, IOException
 {
 		boolean added = false;
-		if(!nameables.contains(nameable)) added = nameables.add(nameable);
-		updateNameables();
+		if(!nameablesClasses.contains(nameable.getClass())){
+			added = nameablesClasses.add((Class<Nameable>)nameable.getClass());
+			nameable.updateNames(this);
+		}
 		return added;
 	}
-	public void updateNameables() throws FileNotFoundException, IOException{
-		for(Nameable nameable : nameables)
-			nameable.updateNames(this);
-	}
+
 	public Scenario(String templatesDir) throws FileNotFoundException, IOException{
 		this.templatesDir = templatesDir;
 		this.roomNames = namesListFor(Room.class);
-		nameables = new ArrayList<Nameable>();
+		nameablesClasses = new ArrayList<Class<Nameable>>();
 		// Load templates from file
 	}
 	

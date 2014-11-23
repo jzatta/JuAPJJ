@@ -89,7 +89,7 @@ class Master {
 						Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
 						int potential = history.context().evtPotentials().get(i);
 						GeneratedEvent genEvt = genClass.newInstance();
-						genEvt.setupNamer(scene);
+						scene.addNameable((Nameable)genEvt);
 						genEvt.addItselfRoom(room,potential);
 						//room.addGeneratedEvent(genClass,scene.namesListFor(genClass),history.context().evtPotentials().get(i));
 					}

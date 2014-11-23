@@ -36,9 +36,6 @@ public class TrapChest implements GeneratedEvent, Nameable{
 	public void setupLevel(int level){
 		this.level = level;
 	}
-	public void setupNamer(Namer namer) throws FileNotFoundException, IOException{
-		namer.addNameable(this);
-	}
 	
 	public void addItselfRoom(Room room, int potential){
 		try{
@@ -80,7 +77,7 @@ public class TrapChest implements GeneratedEvent, Nameable{
 //) *
 //0.1[10% of player hp]
 			} else{
-				Master.ioManager.showMessage("It was a trap. You escaped!");
+				Master.ioManager.showMessage("It was a trap " + this.name + ". You escaped!");
 				this.interacted = true;
 			}
 		}

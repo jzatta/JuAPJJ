@@ -42,9 +42,6 @@ class Monster implements GeneratedEvent, Nameable{
 			generateStats();
 		}
 	}
-	public void setupNamer(Namer namer) throws FileNotFoundException, IOException{
-		namer.addNameable(this);
-	}
 	
 	public void generateStats(){
 		while(health == 0){ //essa formula corre o risco de dar 0, nao queremos um bicho com 0 de hp

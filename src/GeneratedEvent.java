@@ -10,7 +10,6 @@ interface GeneratedEvent{
 	
 	void setupName(String name);
 	void setupLevel(int level);
-	void setupNamer(Namer namer) throws FileNotFoundException, IOException;
 	void interacts(Player player);
 	void addItselfRoom(Room room, int potential);
 }
