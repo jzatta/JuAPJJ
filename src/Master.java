@@ -12,7 +12,7 @@ class Master {
 // // 		}
 // // 	}
 	private Scenario scene;
-	private Player p;
+	private Player player;
 	private History history;
 	public static IOManager ioManager;
 	private final String playerSerFilePath = "player.ser";
@@ -23,7 +23,7 @@ class Master {
 		try{
 			this.ioManager = ioManager;
 			scene = new Scenario(".");
-			p = new Player("");
+			player = new Player("");
 			history = scene.getHistory();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -55,12 +55,12 @@ class Master {
 	}
 	
 	public void loadGame(){
-		p = (Player)deSerializes(playerSerFilePath);
+		player = (Player)deSerializes(playerSerFilePath);
 		history = (History)deSerializes(historySerFilePath);
 	}
 
 	public void saveGame(){
-		serializes(p,playerSerFilePath);
+		serializes(player,playerSerFilePath);
 		serializes(history,historySerFilePath);
 	}
 	public boolean initialMenu(){
@@ -68,7 +68,7 @@ class Master {
 		switch(ioManager.getCommand()){
 			case 1:
 				String playerName = ioManager.getString("What's your player name?");
-				p = new Player(playerName);
+				player = new Player(playerName);
 				history.reset();
 				break;
 			case 2:
@@ -84,15 +84,15 @@ class Master {
 		try{
 			while(initialMenu()){
 				do{
-					Room room = new Room(scene,p.getLevel());
+					Room room = new Room(scene,player.getLevel());
 					for(int i = 0; i < history.context().eventNames().size(); i++){
 						Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
 						room.addGeneratedEvent(genClass,scene.namesListFor(genClass),history.context().evtPotentials().get(i));
 					}
 					ioManager.showMessage(history.context().plot());
-					room.getEvent().interacts(p);
+					room.getEvent().interacts(player);
 					saveGame();
-				}while(history.hasContext());
+				}while(history.hasContext() && player.isAlive());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
