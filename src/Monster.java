@@ -1,4 +1,5 @@
-class Monster implements GeneratedEvent, Interable{
+//class Monster implements GeneratedEvent, Interable{
+class Monster implements GeneratedEvent{
 	private String name;
 	private int level;
 	private int health;
