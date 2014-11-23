@@ -1,17 +1,29 @@
 class Item{
 	private String name;
+	private int attack, defense;
 	private static NameGenerator itemNames;
-	public Item(int plevel, int luck){}
 	
-	int reduceDamage(){
-		return 0;
+	
+	public void configureItself(Scenario scene) throws FileNotFoundException, IOException{
+		this.skillNames = scene.namesListFor(Item.class);
 	}
-		// if equipped, can reduce damage suffered by player
-	int increaseDamage(){
-		return 0;
+	
+	public Item(int plevel, int luck){
+		if(skillNames != null) this.name = skillNames.getName();
+		attack = Math.random() * level*0.75 * luck*0.75;
+		defense = Math.random() * level*0.75 * luck*0.75;
 	}
-		// if equipped, can increase damage applied by player
-	double weight(){
+	
+	public int reduceDamage(){
+		return defense;
+	}
+	
+	public int increaseDamage(){
+		return attack;
+	}
+	
+	public double weight(){
+		// Not implemented yet
 		return 0.0;
 	}
 }
