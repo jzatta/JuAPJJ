@@ -5,17 +5,20 @@ class Monster implements GeneratedEvent{
 	private int health;
 	private int str,agi,dex,intl,vit,luck;
 	private int armorLevel, weaponLevel;
+	private boolean itemPuckUp;
 
 
 	public Monster(String name,int level){ //constructor only for test purposes
 		this.name = name;
 		this. level = level;
+		this.itemPuckUp = false;
 		generateStats();
 	}
 	
 	public Monster(){
 		this.name = null;
 		this.level = 0;
+		this.itemPuckUp = false;
 		generateStats();
 	}
 	
@@ -77,15 +80,10 @@ class Monster implements GeneratedEvent{
 	
 	public boolean dropsItem(int playerLuck){
 		int itemRoll = (int)Math.random()*100;
-		if(itemRoll <= playerLuck*5){
+		if(itemRoll <= playerLuck*5 && !this.itemPuckUp){
 			return true;
 		}
 		return false;
-	}
-	
-	public Item pickUpItem(int luck){
-		//return item generated with base on level and Math.random();
-		return null;
 	}
 	
 	public String getInteraction(){
@@ -100,9 +98,14 @@ class Monster implements GeneratedEvent{
 		}
 	}
 
-	public void interacts(Player p){
-		Combat c = new Combat(p,this);
-		c.fight();
+	public void interacts(Player player){
+		if (this.active()){
+			Combat c = new Combat(player,this);
+			c.fight();
+		}
+		else if (!this.itemPuckUp){
+			player.addToInventory(new Item(level,player.getLuck()));
+		}
 	}
 
 

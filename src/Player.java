@@ -169,5 +169,10 @@ class Player implements java.io.Serializable{
 		baseStr += w.increaseDamage();
 		equipedItems[0] = w; // and finally equip the weapon. Should work.
 	}
+	
+	public double chanceToEscape(){
+		double formula = agi * 0.35 + dex * 0.35 + intl * 0.2 + luck * 0.1;
+		return formula;
+	}
 
 }

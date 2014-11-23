@@ -1,33 +1,67 @@
-public class ItemChest implements GeneratedEvent{	
-	Scenario scene;
-	int level; //not sure if we will use this.
+public class ItemChest implements GeneratedEvent{
+	private String name;
+	private int level; //not sure if we will use this.
+	private boolean interacted;
 
-	public ItemChest(Scenario scene, int level){
-		this.scene = scene;
+	public ItemChest(String name, int level){
+		this.name = name;
 		this.level = level;
+		this.interacted = false;
 	}
+	
+	public ItemChest(){
+		this.name = null;
+		this.level = 0;
+		this.interacted = false;
+	}
+	
+	public void setupName(String name){
+		if (this.name == null)
+			this.name = name;
+	}
+	
+	public void setupLevel(int level){
+		if (this.level == 0)
+			this.level = level;
+	}
+	
+	public static void addItselfRoom(Room room, Scenario scene, int potential){
+		try{
+			room.addGeneratedEvent(ItemChest.class,scene.namesListFor(ItemChest.class),potential);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public boolean active(){
-		return true;
+		return !this.interacted;
 		//TODO check if list is empty and return false
 	}
+	
 	public boolean damage(int damage){
 		return false;
 	}
+	
 	public int attack(){
 		return 0;
 	}
-	public boolean dropsItem(int luck){
-		return true;
-	}
+	
 	public Item pickUpItem(int luck){
-		return new Item(level,luck); // luck won't be needed since the chest was already found?
+		if (interacted == false){
+			this.interacted = true;
+			return new Item(level,luck); // luck won't be needed since the chest was already found?
+		}
+		return null;
 	}
+	
 	public String getInteraction(){
-		return "You found an item chest!";
+		return "You found an "+name+"!";// Player dont know if is a ItemChest or a Trap
 	}
-	public void setupName(String name){}//item chests have no names
-	public void setupLevel(int level){
-		this.level = level;
+
+	public void interacts(Player player){
+		if (interacted == false){
+			this.interacted = true;
+			player.addToInventory(new Item(level,player.getLuck()));
+		}
 	}
-	public void interacts(Player player){}
 }
