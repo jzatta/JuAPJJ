@@ -45,6 +45,13 @@ public class ItemChest implements GeneratedEvent{
 	public int attack(){
 		return 0;
 	}
+	public boolean dropsItem(int playerLuck){
+		int itemRoll = (int)Math.random()*100;
+		if(itemRoll <= playerLuck*5){
+			return true;
+		}
+		return false;
+	}
 	
 	public Item pickUpItem(int luck){
 		if (interacted == false){

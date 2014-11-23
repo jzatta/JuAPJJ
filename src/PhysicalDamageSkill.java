@@ -8,7 +8,7 @@ class PhysicalDamageSkill implements Skill{
 	private static NameGenerator skillNames = null;
 	
 	public static void configureItself(Scenario scene) throws FileNotFoundException, IOException{
-		this.skillNames = scene.namesListFor(PhysicalDamageSkill.class);
+		PhysicalDamageSkill.skillNames = scene.namesListFor(PhysicalDamageSkill.class);
 	}
 
 	public PhysicalDamageSkill(int skillFactor){

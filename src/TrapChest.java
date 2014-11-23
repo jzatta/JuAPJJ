@@ -31,7 +31,7 @@ public class TrapChest implements GeneratedEvent{
 	
 	public static void addItselfRoom(Room room, Scenario scene, int potential){
 		try{
-			room.addGeneratedEvent(Trap.class,scene.namesListFor(ItemChest.class),potential); // Pick same names from ItemChest
+			room.addGeneratedEvent(TrapChest.class,scene.namesListFor(ItemChest.class),potential); // Pick same names from ItemChest
 		} catch (Exception e){
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class TrapChest implements GeneratedEvent{
 		if (interacted == false){
 			double chance = ((level * 0.75) + 4) * (Math.random()*1.75); // rever formula
 			if (chance > player.chanceToEscape()){
-				player.damage(Math.random() * (15 + (level * 0.6)));
+				player.damage((int)(Math.random() * (15 + (level * 0.6))));
 				Master.ioManager.showMessage("It was a trap. Your Hp is "+player.getHP());
 				this.interacted = true;
 //Formula: Math.random() * (150 + (level * 0.2 * 3 * 10) * 0.1)

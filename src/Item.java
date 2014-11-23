@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 class Item{
 	private String name;
 	private int attack, defense;
@@ -5,13 +8,13 @@ class Item{
 	
 	
 	public void configureItself(Scenario scene) throws FileNotFoundException, IOException{
-		this.skillNames = scene.namesListFor(Item.class);
+		Item.itemNames = scene.namesListFor(Item.class);
 	}
 	
 	public Item(int plevel, int luck){
-		if(skillNames != null) this.name = skillNames.getName();
-		attack = Math.random() * level*0.75 * luck*0.75;
-		defense = Math.random() * level*0.75 * luck*0.75;
+		if(itemNames != null) this.name = itemNames.getName();
+		attack = (int)(Math.random() * plevel*0.75 * luck*0.75);
+		defense = (int)(Math.random() * plevel*0.75 * luck*0.75);
 	}
 	
 	public int reduceDamage(){
