@@ -2,10 +2,15 @@ class HealSkill implements Skill{
 	private String name;
 	private int skillFactor;
 	private Console c;
+	private static NameGenerator skillNames = null;
+	
+	public static void configureItself(Scenario scene) throws FileNotFoundException, IOException{
+		this.skillNames = scene.namesListFor(HealSkill.class);
+	}
 
-	public HealSkill(String name, int skillFactor){
+	public HealSkill(int skillFactor){
 		c = new Console();
-		this.name = name;
+		if(skillNames != null) this.name = skillNames.getName();
 		this.skillFactor = skillFactor;
 	}
 	public void useSkill(Player p, Monster m){

@@ -3,10 +3,15 @@ class BuffSkill implements Skill{
 	private int skillFactor;
 	private String statToBuff;
 	private IOManager c;
+	private static NameGenerator skillNames = null;
+	
+	public static void configureItself(Scenario scene) throws FileNotFoundException, IOException{
+		this.skillNames = scene.namesListFor(BuffSkill.class);
+	}
 
-	public BuffSkill(String name, String statToBuff, int skillFactor){
+	public BuffSkill(String statToBuff, int skillFactor){
 		c = new Console();
-		this.name = name;
+		if(skillNames != null) this.name = skillNames.getName();
 		this. skillFactor = skillFactor;
 		boolean validStat = false;
 		String[] stats = new String[]{"STR","AGI","DEX","INTL","VIT","LUCK"};

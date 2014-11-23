@@ -7,7 +7,7 @@ class PhysicalDamageSkill implements Skill{
 	private String statToBuff;
 	private static NameGenerator skillNames = null;
 	
-	public void startItself(Scenario scene) throws FileNotFoundException, IOException{
+	public static void configureItself(Scenario scene) throws FileNotFoundException, IOException{
 		this.skillNames = scene.namesListFor(PhysicalDamageSkill.class);
 	}
 

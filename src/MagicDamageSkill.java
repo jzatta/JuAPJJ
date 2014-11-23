@@ -3,10 +3,15 @@ class MagicDamageSkill implements Skill{
 	private int skillFactor;
 	private String statToBuff;
 //	private Console c;
+	private static NameGenerator skillNames = null;
+	
+	public static void configureItself(Scenario scene) throws FileNotFoundException, IOException{
+		this.skillNames = scene.namesListFor(MagicDamageSkill.class);
+	}
 
-	public MagicDamageSkill(String name, int skillFactor){
+	public MagicDamageSkill(int skillFactor){
 //		c = new Console();
-		this.name = name;
+		if(skillNames != null) this.name = skillNames.getName();
 		this.skillFactor = skillFactor;
 	}
 
