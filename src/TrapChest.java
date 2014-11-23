@@ -1,7 +1,11 @@
-public class TrapChest implements GeneratedEvent{
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class TrapChest implements GeneratedEvent, Nameable{
 	private String name;
 	private int level; //not sure if we will use this.
 	private boolean interacted;
+	private static NameGenerator trapNames = null;
 
 	public TrapChest(String name, int level){
 		this.name = name;
@@ -13,6 +17,10 @@ public class TrapChest implements GeneratedEvent{
 		this.name = null;
 		this.level = 0;
 		this.interacted = false;
+	}
+
+	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
+		TrapChest.trapNames = namer.namesListFor(TrapChest.class);
 	}
 	
 	public boolean active(){
@@ -28,10 +36,13 @@ public class TrapChest implements GeneratedEvent{
 	public void setupLevel(int level){
 		this.level = level;
 	}
+	public void setupNamer(Namer namer) throws FileNotFoundException, IOException{
+		namer.addNameable(this);
+	}
 	
-	public static void addItselfRoom(Room room, Scenario scene, int potential){
+	public void addItselfRoom(Room room, int potential){
 		try{
-			room.addGeneratedEvent(TrapChest.class,scene.namesListFor(ItemChest.class),potential); // Pick same names from ItemChest
+			room.addGeneratedEvent(TrapChest.class,TrapChest.trapNames,potential); // Pick same names from ItemChest
 		} catch (Exception e){
 			e.printStackTrace();
 		}
@@ -58,7 +69,7 @@ public class TrapChest implements GeneratedEvent{
 			double chance = ((level * 0.75) + 4) * (Math.random()*1.75); // rever formula
 			if (chance > player.chanceToEscape()){
 				player.damage((int)(Math.random() * (15 + (level * 0.6))));
-				Master.ioManager.showMessage("It was a trap. Your Hp is "+player.getHP());
+				Master.ioManager.showMessage("It was a trap " + this.name + ". Your Hp is "+player.getHP());
 				this.interacted = true;
 //Formula: Math.random() * (150 + (level * 0.2 * 3 * 10) * 0.1)
 //Math.random()[random] * 

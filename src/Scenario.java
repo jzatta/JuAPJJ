@@ -3,21 +3,35 @@ import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import com.google.gson.Gson;
-import java.util.Arrays;
+import java.util.*;
 
-class Scenario{
+class Scenario implements Namer{
 	NameGenerator roomNames;
 	private String templatesDir;
+	private List<Nameable> nameables;
 	
 	
 	public Scenario(NameGenerator n){ //constructor for test Purposes
 		roomNames = n;
 		this.templatesDir = ".";
+		nameables = new ArrayList<Nameable>();
 	}
 
+	public boolean addNameable(Nameable nameable) throws FileNotFoundException, IOException
+{
+		boolean added = false;
+		if(!nameables.contains(nameable)) added = nameables.add(nameable);
+		updateNameables();
+		return added;
+	}
+	public void updateNameables() throws FileNotFoundException, IOException{
+		for(Nameable nameable : nameables)
+			nameable.updateNames(this);
+	}
 	public Scenario(String templatesDir) throws FileNotFoundException, IOException{
 		this.templatesDir = templatesDir;
 		this.roomNames = namesListFor(Room.class);
+		nameables = new ArrayList<Nameable>();
 		// Load templates from file
 	}
 	
@@ -51,7 +65,6 @@ class Scenario{
 		FileReader reader = new FileReader(nameFile);
 		while( (charReaded = reader.read()) > 0) jsonStr.append((char)charReaded);
 		Gson jsonConverter = new Gson();
-		System.out.println(jsonStr.toString());
 		return jsonConverter.fromJson(jsonStr.toString(),History.class);
 	}
 	

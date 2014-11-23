@@ -1,15 +1,15 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-class BuffSkill implements Skill{
+class BuffSkill implements Skill, Nameable{
 	private String name;
 	private int skillFactor;
 	private String statToBuff;
 	private IOManager c;
 	private static NameGenerator skillNames = null;
 	
-	public static void configureItself(Scenario scene) throws FileNotFoundException, IOException{
-		BuffSkill.skillNames = scene.namesListFor(BuffSkill.class);
+	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
+		BuffSkill.skillNames = namer.namesListFor(BuffSkill.class);
 	}
 
 	public BuffSkill(String statToBuff, int skillFactor){

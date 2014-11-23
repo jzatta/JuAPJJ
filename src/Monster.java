@@ -1,12 +1,20 @@
 //class Monster implements GeneratedEvent, Interable{
-class Monster implements GeneratedEvent{
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+class Monster implements GeneratedEvent, Nameable{
 	private String name;
 	private int level;
 	private int health;
 	private int str,agi,dex,intl,vit,luck;
 	private int armorLevel, weaponLevel;
 	private boolean itemPuckUp;
+	private static NameGenerator monsterNames = null;
 
+
+	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
+		Monster.monsterNames = namer.namesListFor(Monster.class);
+	}
 
 	public Monster(String name,int level){ //constructor only for test purposes
 		this.name = name;
@@ -33,6 +41,9 @@ class Monster implements GeneratedEvent{
 			this.level = level;
 			generateStats();
 		}
+	}
+	public void setupNamer(Namer namer) throws FileNotFoundException, IOException{
+		namer.addNameable(this);
 	}
 	
 	public void generateStats(){
@@ -90,9 +101,9 @@ class Monster implements GeneratedEvent{
 		return "You face " + this.name + ". It appears to be a level " + level + " monster.";
 	}
 	
-	public static void addItselfRoom(Room room, Scenario scene, int potential){
+	public void addItselfRoom(Room room, int potential){
 		try{
-			room.addGeneratedEvent(Monster.class,scene.namesListFor(Monster.class),potential);
+			room.addGeneratedEvent(Monster.class,Monster.monsterNames,potential);
 		} catch (Exception e){
 			e.printStackTrace();
 		}

@@ -40,7 +40,7 @@ class Master {
 			e.printStackTrace();
 		}
 	}
-	public Object deSerializes(String filePath){
+	public Object unSerializes(String filePath){
 		try{
 			FileInputStream file = new FileInputStream(filePath);
 			ObjectInputStream inStream = new ObjectInputStream(file);
@@ -55,8 +55,8 @@ class Master {
 	}
 	
 	public void loadGame(){
-		player = (Player)deSerializes(playerSerFilePath);
-		history = (History)deSerializes(historySerFilePath);
+		player = (Player)unSerializes(playerSerFilePath);
+		history = (History)unSerializes(historySerFilePath);
 	}
 
 	public void saveGame(){
@@ -87,7 +87,11 @@ class Master {
 					Room room = new Room(scene,player.getLevel());
 					for(int i = 0; i < history.context().eventNames().size(); i++){
 						Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
-						room.addGeneratedEvent(genClass,scene.namesListFor(genClass),history.context().evtPotentials().get(i));
+						int potential = history.context().evtPotentials().get(i);
+						GeneratedEvent genEvt = genClass.newInstance();
+						genEvt.setupNamer(scene);
+						genEvt.addItselfRoom(room,potential);
+						//room.addGeneratedEvent(genClass,scene.namesListFor(genClass),history.context().evtPotentials().get(i));
 					}
 					ioManager.showMessage(history.context().plot());
 					room.getEvent().interacts(player);

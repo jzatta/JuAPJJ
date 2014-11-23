@@ -1,14 +1,14 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-class PhysicalDamageSkill implements Skill{
+class PhysicalDamageSkill implements Skill, Nameable{
 	private String name;
 	private int skillFactor;
 	private String statToBuff;
 	private static NameGenerator skillNames = null;
 	
-	public static void configureItself(Scenario scene) throws FileNotFoundException, IOException{
-		PhysicalDamageSkill.skillNames = scene.namesListFor(PhysicalDamageSkill.class);
+	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
+		PhysicalDamageSkill.skillNames = namer.namesListFor(PhysicalDamageSkill.class);
 	}
 
 	public PhysicalDamageSkill(int skillFactor){

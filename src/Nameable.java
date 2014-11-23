@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 interface Nameable{
-	NameGenerator updateNames();
+	void updateNames(Namer namer) throws FileNotFoundException, IOException;
 }

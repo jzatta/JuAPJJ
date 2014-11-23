@@ -1,14 +1,14 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-class HealSkill implements Skill{
+class HealSkill implements Skill, Nameable{
 	private String name;
 	private int skillFactor;
 	private Console c;
 	private static NameGenerator skillNames = null;
 	
-	public static void configureItself(Scenario scene) throws FileNotFoundException, IOException{
-		HealSkill.skillNames = scene.namesListFor(HealSkill.class);
+	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
+		HealSkill.skillNames = namer.namesListFor(HealSkill.class);
 	}
 
 	public HealSkill(int skillFactor){

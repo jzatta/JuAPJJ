@@ -25,9 +25,12 @@ public class ItemChest implements GeneratedEvent{
 			this.level = level;
 	}
 	
-	public static void addItselfRoom(Room room, Scenario scene, int potential){
+	public void setupNamer(Namer namer){
+
+	}
+	public void addItselfRoom(Room room, int potential){
 		try{
-			room.addGeneratedEvent(ItemChest.class,scene.namesListFor(ItemChest.class),potential);
+			room.addGeneratedEvent(ItemChest.class,null,potential);
 		} catch (Exception e){
 			e.printStackTrace();
 		}
