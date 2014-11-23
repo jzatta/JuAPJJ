@@ -29,4 +29,5 @@ public class ItemChest implements GeneratedEvent{
 	public void setupLevel(int level){
 		this.level = level;
 	}
+	public void interacts(Player player){}
 }
