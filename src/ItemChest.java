@@ -1,7 +1,11 @@
-public class ItemChest implements GeneratedEvent{
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class ItemChest implements GeneratedEvent, Nameable{
 	private String name;
 	private int level; //not sure if we will use this.
 	private boolean interacted;
+	private static NameGenerator itemChestNames = null;
 
 	public ItemChest(String name, int level){
 		this.name = name;
@@ -14,6 +18,9 @@ public class ItemChest implements GeneratedEvent{
 		this.level = 0;
 		this.interacted = false;
 	}
+	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
+		ItemChest.itemChestNames = namer.namesListFor(ItemChest.class);
+	}
 	
 	public void setupName(String name){
 		if (this.name == null)
@@ -25,9 +32,6 @@ public class ItemChest implements GeneratedEvent{
 			this.level = level;
 	}
 	
-	public void setupNamer(Namer namer){
-
-	}
 	public void addItselfRoom(Room room, int potential){
 		try{
 			room.addGeneratedEvent(ItemChest.class,null,potential);
