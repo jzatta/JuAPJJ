@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Context{
+class Context implements java.io.Serializable{
 	private String plot;
 	private List<String> eventNames;
 	private List<Integer> evtPotentials;

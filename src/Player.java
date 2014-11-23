@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Player{
+class Player implements java.io.Serializable{
 	private String name;
 	private int str,agi,dex,intl,vit,luck; //stats in combat
 	private int baseStr,baseAgi,baseDex,baseIntl,baseVit,baseLuck;//base stats

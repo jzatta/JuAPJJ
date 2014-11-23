@@ -1,6 +1,6 @@
 import java.util.*;
 
-class History{
+class History implements java.io.Serializable{
 	private List<Context> context;
 	private int index;
 

@@ -1,4 +1,8 @@
 import java.io.File;
+import java.io.ObjectOutputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
 
 class Master {
 // // 	public void run(){
@@ -11,6 +15,8 @@ class Master {
 	private Player p;
 	private History history;
 	public static IOManager ioManager;
+	private final String playerSerFilePath = "player.ser";
+	private final String historySerFilePath = "history.ser";
 
 
 	public Master(IOManager ioManager){
@@ -23,15 +29,50 @@ class Master {
 			e.printStackTrace();
 		}
 	}
+	public void serializes(Object obj, String filePath){
+		try{
+			FileOutputStream file = new FileOutputStream(filePath);
+			ObjectOutputStream outStream = new ObjectOutputStream(file);
+			outStream.writeObject(obj);
+			outStream.close();
+			file.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public Object deSerializes(String filePath){
+		try{
+			FileInputStream file = new FileInputStream(filePath);
+			ObjectInputStream inStream = new ObjectInputStream(file);
+			Object obj = inStream.readObject();
+			inStream.close();
+			file.close();
+			return obj;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void loadGame(){
+		p = (Player)deSerializes(playerSerFilePath);
+		history = (History)deSerializes(historySerFilePath);
+	}
+
+	public void saveGame(){
+		serializes(p,playerSerFilePath);
+		serializes(history,historySerFilePath);
+	}
 	public boolean initialMenu(){
 		ioManager.showMessage("What do you want to do?\n1) New game\n2) Load game\n3) Exit");
 		switch(ioManager.getCommand()){
 			case 1:
 				String playerName = ioManager.getString("What's your player name?");
 				p = new Player(playerName);
+				history.reset();
 				break;
 			case 2:
-				//Game game = new Game();
+				loadGame();
 				break;
 			case 3:
 				return false;
@@ -42,7 +83,6 @@ class Master {
 	public void run(){
 		try{
 			while(initialMenu()){
-				history.reset();
 				do{
 					Room room = new Room(scene,p.getLevel());
 					for(int i = 0; i < history.context().eventNames().size(); i++){
@@ -51,6 +91,7 @@ class Master {
 					}
 					ioManager.showMessage(history.context().plot());
 					room.getEvent().interacts(p);
+					saveGame();
 				}while(history.hasContext());
 			}
 		}catch(Exception e){
