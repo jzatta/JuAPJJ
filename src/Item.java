@@ -26,7 +26,7 @@ class Item{
 	}
 	
 	public double weight(){
-		// Not implemented yet
-		return 0.0;
+		int weight =(int) Math.sqrt(attack*defense);
+		return weight;
 	}
 }
