@@ -9,6 +9,10 @@ class History{
 		this.index = 0;
 	}
 
+	public void reset(){
+		this.index = 0;
+	}
+
 	public boolean hasContext(){
 		index++;
 		return (index < context.size());
