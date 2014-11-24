@@ -8,6 +8,7 @@ class Monster implements GeneratedEvent, Nameable{
 	private int health;
 	private int str,agi,dex,intl,vit,luck;
 	private int armorLevel, weaponLevel;
+	private int expToGive;
 	private boolean itemPuckUp;
 	private static NameGenerator monsterNames = null;
 
@@ -25,7 +26,7 @@ class Monster implements GeneratedEvent, Nameable{
 	
 	public Monster(){
 		this.name = null;
-		this.level = 0;
+		this.level = 1;
 		this.itemPuckUp = false;
 		generateStats();
 	}
@@ -55,6 +56,7 @@ class Monster implements GeneratedEvent, Nameable{
 		luck = (int)((Math.random()*100)%(level+10))+1;
 		armorLevel = (int)(Math.random()*level-1);
 		weaponLevel = (int)(Math.random()*level-1);
+		expToGive = level*50;
 	}
 	
 	public boolean active(){
@@ -84,7 +86,9 @@ class Monster implements GeneratedEvent, Nameable{
 // 		algorithm to reduce player health
 		return 0;
 	}
-	
+	public int exp(){
+		return expToGive;
+	}	
 	
 	public boolean dropsItem(int playerLuck){
 		int itemRoll = (int)Math.random()*100;
@@ -95,7 +99,7 @@ class Monster implements GeneratedEvent, Nameable{
 	}
 	
 	public String getInteraction(){
-		return "You face " + this.name + ". It appears to be a level " + level + " monster.";
+		return "Você encontrou um" + this.name + ". Trata-se de um monstro nivel " + level + ".";
 	}
 	
 	public void addItselfRoom(Room room, int potential){
@@ -143,4 +147,5 @@ class Monster implements GeneratedEvent, Nameable{
 		//just for tests
 		return "Name: " + name +"\nLevel: "+ level +"\nHealth: "+ health +"\nstr: "+ str + "\nagi: "+agi + "\ndex: "+dex + "\nintl: "+intl + "\nvit: "+vit + "\nluck: "+luck + "\narmor: "+armorLevel + "\nweapon: "+weaponLevel+"\n"+getInteraction();
 	}
+
 }

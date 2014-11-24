@@ -21,7 +21,7 @@ class Master {
 
 	public Master(IOManager ioManager){
 		try{
-			this.ioManager = ioManager;
+			Master.ioManager = ioManager;
 			scene = new Scenario(".");
 			player = new Player("");
 			history = scene.getHistory();
@@ -85,14 +85,14 @@ class Master {
 			while(initialMenu()){
 				do{
 					Room room = scene.generateRoom(player.getLevel());
-					for(int i = 0; i < history.context().eventNames().size(); i++){
+						for(int i = 0; i < history.context().eventNames().size(); i++){
 						Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
 						int potential = history.context().evtPotentials().get(i);
 						GeneratedEvent genEvt = genClass.newInstance();
 						scene.addNameable((Nameable)genEvt);
 						genEvt.addItselfRoom(room,potential);
 					}
-					ioManager.showMessage("You are now in room " + room.roomName());
+					ioManager.showMessage("Você está na sala " + room.roomName());
 					ioManager.showMessage(history.context().plot());
 					room.getEvent().interacts(player);
 					saveGame();

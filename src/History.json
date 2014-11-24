@@ -1,14 +1,20 @@
 {	context:[
 		{
-			plot:"Você acaba de nascer, mas muitos desafios podem já acontecer!",
+			plot:"\n\nVocê acaba de nascer, mas muitos desafios podem já acontecer!",
 			eventNames:["Monster","TrapChest","ItemChest"],
-			evtPotentials:[0,0,1]
+			evtPotentials:[7,6,5]
 		},
 		{
-			plot:"É a universidade não é assim tão simples, enfrente mais isto",
+			plot:"\n\nÉ a universidade não é assim tão simples, enfrente mais isto",
 			eventNames:["Monster","TrapChest"],
-			evtPotentials:[0,1]
+			evtPotentials:[5,5]
+		},
+		{
+			plot:"\n\nPlot twist: treta com um monstro ae",
+			eventNames:["Monster"],
+			evtPotentials:[1]
 		}
+
 	],
 	index:0
 }

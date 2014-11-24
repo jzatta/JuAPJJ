@@ -13,6 +13,7 @@ class Player implements java.io.Serializable{
 	private List<Item> inventory;
 	private Item[] equipedItems;
 	private int accumulatedWeight;//soma dos pesos dos itens no inventario
+	
 
 	public Player(String name){
 		this.name = name;
@@ -36,6 +37,7 @@ class Player implements java.io.Serializable{
 		this.intl = baseIntl;
 		this.vit = baseVit;
 		this.luck = baseLuck;
+		nextLevel = 50;
 	}
 	public void calculateHpSp(){
 		this.baseHP = 50+ 10* baseVit;
@@ -66,6 +68,8 @@ class Player implements java.io.Serializable{
 		level++;
 		increaseStats();
 		calculateHpSp();
+		exp = 0;
+		nextLevel*=(int)Math.pow(nextLevel,3)+3*(Math.pow(nextLevel,2)+2*nextLevel+1);
 	}
 	public void damage(int d){
 		currentHP -= d;
@@ -88,9 +92,8 @@ class Player implements java.io.Serializable{
 		luck = baseLuck;
 	}
 	public void increaseStats(){
-		Console c = new Console();
 		Stats toIncrease = null;
-		String statToIncrease = c.promptForString("Level up! Which stat to increase?(STR,AGI,DEX,INTL,VIT,LUCK)");
+		String statToIncrease = Master.ioManager.getString("Você upou! Qual stat aumentar(STR,AGI,DEX,INTL,VIT,LUCK)?");
 		for(Stats stat:Stats.values()){
 			if(statToIncrease.equalsIgnoreCase(stat.name())){
 				toIncrease = stat;
@@ -150,6 +153,7 @@ class Player implements java.io.Serializable{
 		}
 		else{
 			accumulatedWeight-= i.weight();
+			Master.ioManager.showMessage("Pena que seu inventário estava cheio :/");
 		}
 	}
 	public void removeFromInventory(Item i){
@@ -173,6 +177,12 @@ class Player implements java.io.Serializable{
 	public double chanceToEscape(){
 		double formula = agi * 0.35 + dex * 0.35 + intl * 0.2 + luck * 0.1;
 		return formula;
+	}
+	public void gainExp(int exp){
+		this.exp+= exp;
+		if(this.exp >= nextLevel){
+			levelUp();
+		}
 	}
 
 }
