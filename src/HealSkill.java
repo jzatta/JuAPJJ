@@ -4,7 +4,7 @@ import java.io.IOException;
 class HealSkill implements Skill, Nameable{
 	private String name;
 	private int skillFactor;
-	private Console c;
+	private IOManager c;
 	private static NameGenerator skillNames = null;
 	
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
@@ -23,8 +23,5 @@ class HealSkill implements Skill, Nameable{
 	}
 	public String skillName(){
 		return this.name;
-	}
-	public String getName(){
-		return name;
 	}
 }
