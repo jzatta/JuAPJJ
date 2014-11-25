@@ -51,7 +51,7 @@ class Player implements java.io.Serializable{
 		return false;
 	}
     public void addInitialSKills(){
-        HealSkill initialHealing = new HealSkill("Cura I",10);
+        HealSkill initialHealing = new HealSkill("Cura I",15);
         BuffSkill initialStrBuff = new BuffSkill("STR","Aumentar STR I",3);
         PhysicalDamageSkill initialPhysicalDamage = new PhysicalDamageSkill("Socão cabuloso da perdição",10);
         MagicDamageSkill initialMagicDamage = new MagicDamageSkill("Macumba cabulosa",8);
@@ -106,6 +106,30 @@ class Player implements java.io.Serializable{
 		vit = baseVit;
 		luck = baseLuck;
 	}
+	public void increaseStats(Stats toIncrease){
+		switch(toIncrease){
+			case STR:
+				baseStr+=3;
+				break;
+			case AGI:
+				baseAgi+=3;
+				break;
+			case DEX:
+				baseDex+=3;
+				break;
+			case INTL:
+				baseIntl+=3;
+				break;
+			case VIT:
+				baseVit+=3;
+				break;
+			case LUCK:
+				baseLuck+=3;
+				break;
+			default:
+				break;
+		}
+	}
 	public void increaseStats(){
 		Stats toIncrease = null;
 		String statToIncrease = Master.ioManager.getString("Você upou! Qual stat aumentar(STR,AGI,DEX,INTL,VIT,LUCK)?");
@@ -114,28 +138,7 @@ class Player implements java.io.Serializable{
 				toIncrease = stat;
 			}
 		}
-		switch(toIncrease){
-			case STR:
-				str+=3;
-				break;
-			case AGI:
-				agi+=3;
-				break;
-			case DEX:
-				dex+=3;
-				break;
-			case INTL:
-				intl+=3;
-				break;
-			case VIT:
-				vit+=3;
-				break;
-			case LUCK:
-				luck+=3;
-				break;
-			default:
-				break;
-		}
+		increaseStats(toIncrease);
 	}
 	public void buffStr(int factor){
 		str+= factor;

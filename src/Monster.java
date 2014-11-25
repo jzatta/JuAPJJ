@@ -48,12 +48,12 @@ class Monster implements GeneratedEvent, Nameable{
 		while(health == 0){ //essa formula corre o risco de dar 0, nao queremos um bicho com 0 de hp
 			health = (int)((Math.random()*100)%10*(level+10));
 		}
-		str = (int)((Math.random()*100)%(level+10))+1; //somando 1 pra nao dar zero, HUEHUE
-		agi = (int)((Math.random()*100)%(level+10))+1;
-		dex = (int)((Math.random()*100)%(level+10))+1;
-		intl = (int)((Math.random()*100)%(level+10))+1;
-		vit = (int)((Math.random()*100)%(level+10))+1;
-		luck = (int)((Math.random()*100)%(level+10))+1;
+		str = (int)((Math.random()*100)%(level+7))+1; //somando 1 pra nao dar zero, HUEHUE
+		agi = (int)((Math.random()*100)%(level+7))+1;
+		dex = (int)((Math.random()*100)%(level+7))+1;
+		intl = (int)((Math.random()*100)%(level+7))+1;
+		vit = (int)((Math.random()*100)%(level+7))+1;
+		luck = (int)((Math.random()*100)%(level+7))+1;
 		armorLevel = (int)(Math.random()*level-1);
 		weaponLevel = (int)(Math.random()*level-1);
 		expToGive = level*50;
