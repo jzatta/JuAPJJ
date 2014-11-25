@@ -99,7 +99,7 @@ class Monster implements GeneratedEvent, Nameable{
 	}
 	
 	public String getInteraction(){
-		return "Você encontrou um" + this.name + ". Trata-se de um monstro nivel " + level + ".";
+		return "Você encontrou um " + this.name + ". Trata-se de um monstro nivel " + level + ".";
 	}
 	
 	public void addItselfRoom(Room room, int potential){

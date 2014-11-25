@@ -78,8 +78,12 @@ public class ItemChest implements GeneratedEvent, Nameable{
 		int pAction = this.getAction(player);
 		if (interacted == false && (pAction == 1)){
 			this.interacted = true;
-			player.addToInventory(new Item(level,player.getLuck()));
+			Item item = new Item(level,player.getLuck());
+			player.addToInventory(item);
+			Master.ioManager.showMessage("Voce achou "+item);
 		}
+		Master.ioManager.waitInteraction();
+		Master.ioManager.clearScreen();
 	}
 	
 	private int getAction(Player player){

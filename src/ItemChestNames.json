@@ -1,12 +1,18 @@
 {	nouns:[
 		"Bau",
-		"Mochila",
-		"Casulo"
+		"Pacote",
+		"Casulo",
+		"Cesto"
 	],
 	adjectives:[
-		"Furado(a)",
-		"Vermelho(a)",
-		"de Sangue"
+		"furado",
+		"amarelo",
+		"de sangue",
+		"dos demonho",
+		"de crianca",
+		"de madeira",
+		"nada suspeito",
+		"de ouro"
 	]
 
 }

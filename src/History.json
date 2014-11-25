@@ -1,6 +1,6 @@
 {	context:[
 		{
-			plot:"\n\nVocê acaba de nascer, mas muitos desafios podem já acontecer!",
+			plot:"\n\nVocê acabou de nascer, mas muitos desafios podem já acontecer!",
 			eventNames:["Monster"],
 			evtPotentials:[7]
 		},
@@ -10,34 +10,49 @@
 			evtPotentials:[7]
 		},
 		{
-			plot:"\n\nÉ hora do combate",
-			eventNames:["Monster"],
-			evtPotentials:[7]
+			plot:"\n\nÉ hora do Teste",
+			eventNames:["Monster","TrapChest","ItemChest"],
+			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do combate",
-			eventNames:["Monster"],
-			evtPotentials:[7]
+			plot:"\n\nÉ hora do Teste",
+			eventNames:["Monster","TrapChest","ItemChest"],
+			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do combate",
-			eventNames:["Monster"],
-			evtPotentials:[7]
+			plot:"\n\nÉ hora do Teste",
+			eventNames:["Monster","TrapChest","ItemChest"],
+			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do combate",
-			eventNames:["Monster"],
-			evtPotentials:[7]
+			plot:"\n\nÉ hora do Teste",
+			eventNames:["Monster","TrapChest","ItemChest"],
+			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do combate",
-			eventNames:["Monster"],
-			evtPotentials:[7]
+			plot:"\n\nÉ hora do Teste",
+			eventNames:["Monster","TrapChest","ItemChest"],
+			evtPotentials:[1,1,1]
+		},
+		{
+			plot:"\n\nÉ hora do Teste",
+			eventNames:["Monster","TrapChest","ItemChest"],
+			evtPotentials:[1,1,1]
+		},
+		{
+			plot:"\n\nÉ hora do Teste",
+			eventNames:["Monster","TrapChest","ItemChest"],
+			evtPotentials:[1,1,1]
+		},
+		{
+			plot:"\n\nÉ hora do Teste",
+			eventNames:["Monster","TrapChest","ItemChest"],
+			evtPotentials:[1,1,1]
 		},
 		{
 			plot:"\n\nÉ a universidade não é assim tão simples, enfrente mais isto",
-			eventNames:["Monster","TrapChest"],
-			evtPotentials:[5,5]
+			eventNames:["TrapChest"],
+			evtPotentials:[5]
 		},
 		{
 			plot:"\n\nPlot twist: treta com um monstro ae",

@@ -74,6 +74,9 @@ class Player implements java.io.Serializable{
 	public List<Skill> listSkills(){
 		return skills;
 	}
+	public List<Item> listItems(){
+		return inventory;
+	}
 
 	public void levelUp(){
 		level++;

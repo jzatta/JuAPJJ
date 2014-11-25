@@ -24,4 +24,11 @@ public class Console implements IOManager{
 	public String promptForString(String message){
 		return input.nextLine();
 	}
+	public void clearScreen(){
+		System.out.println("\033[H\033[2J");
+	}
+	public void waitInteraction(){
+		input.nextLine();
+		input.nextLine();
+	}
 }

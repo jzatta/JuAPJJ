@@ -77,4 +77,11 @@ public class GUI implements IOManager, ActionListener{
 		else if(cmd.equals("F3")) command = 3;
 		else if(cmd.equals("F4")) command = 4;
 	}
+	public void waitInteraction(){
+		getCommand();
+	}
+	
+	public void clearScreen(){
+		textArea.setText(null);
+	}
 }

@@ -24,6 +24,7 @@ class Master {
 			scene = new Scenario(".");
 			player = new Player("");
 			history = scene.getHistory();
+			scene.addNameable(new Item());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -61,11 +62,13 @@ class Master {
 		serializes(player,playerSerFilePath);
 	}
 	public boolean initialMenu(){
+		ioManager.clearScreen();
 		ioManager.showMessage("O que você deseja fazer?\n1) Novo jogo\n2) Carregar jogo\n3) Sair");
 		switch(ioManager.getCommand()){
 			case 1:
+				ioManager.clearScreen();
 				String playerName = ioManager.getString("Qual o nome do seu jogador?");
-				player = new Player(playerName);
+				player = new PlayerCheat(playerName);
 				history.reset();
 				break;
 			case 2:
@@ -89,7 +92,9 @@ class Master {
 						scene.addNameable((Nameable)genEvt);
 						genEvt.addItselfRoom(room,potential);
 					}
+					ioManager.clearScreen();
 					ioManager.showMessage("Você está na sala " + room.roomName());
+					ioManager.waitInteraction();
 					ioManager.showMessage(history.context().plot());
 					room.getEvent().interacts(player);
 					saveGame();

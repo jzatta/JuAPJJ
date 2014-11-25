@@ -43,18 +43,22 @@ public class Combat{ //implements ActionListener (futuramente)
 		if(actionCommand == 1){
 			playerAttack();
 		}
-		if(actionCommand == 2){
+		else if(actionCommand == 2){
 			playerSkill();
 		}
-		
-		if(actionCommand == 4){
+		else if(actionCommand == 3){
+			playerItem();
+		}
+		else if(actionCommand == 4){
 			return tryRun();
 		}
+		Master.ioManager.waitInteraction();
+		Master.ioManager.clearScreen();
 		if(!monster.active()){
 			return false;
 		}
 		return true;
-		}
+	}
 	public void receiveExp(int exp){
 		player.gainExp(exp);
 		Master.ioManager.showMessage("Você recebeu "+exp+" pontos de experiência");
@@ -84,18 +88,18 @@ public class Combat{ //implements ActionListener (futuramente)
 		return action;
 	}
 	public void playerAttack(){
-		Master.ioManager.showMessage("HP inimigo: "+monster.getHP());
+// 		Master.ioManager.showMessage("HP inimigo: "+monster.getHP());
 		int absoluteDamage = (int)(((Math.pow(player.getStr(),3) / 32) + 32) * 16 / 16);
 		int enemyDefense = (int)(((Math.pow(monster.getVit() - 280.4 ,2)/110)+16));
 		int finalDamage = (int)((absoluteDamage*enemyDefense/730)+Math.random()*5*player.getLuck());
 		boolean crit = playerCritTest();
 		if(crit){
 			finalDamage*=2;
-			Master.ioManager.showMessage("Esse critico ein!");
+			Master.ioManager.showMessage("Eita porra, foi crítico!");
 		}
 		monster.damage(finalDamage);
 		Master.ioManager.showMessage("O "+monster.getName()+" levou "+finalDamage+" de dano.");
-		Master.ioManager.showMessage(monster.getName()+"'s hp is now "+monster.getHP());
+		Master.ioManager.showMessage(monster.getName()+" esta com "+monster.getHP()+" de HP");
 	}
 	public void playerSkill(){
 		List<Skill> playerSkills = player.listSkills();
@@ -107,8 +111,22 @@ public class Combat{ //implements ActionListener (futuramente)
 		int skillToBeUsed = Master.ioManager.getCommand();
 		receiveSkill(playerSkills.get(skillToBeUsed-1));
 	}
+	public void playerItem(){
+		List<Item> playerItems = player.listItems();
+		String itemsList = "";
+		for(int i = 0; i < playerItems.size(); i++){
+			itemsList += (i+1)+"."+playerItems.get(i).itemName()+"\n";
+		}
+		Master.ioManager.showMessage("Qual item?\n"+itemsList);
+		int itemToBeUsed = Master.ioManager.getCommand();
+		Item selectedItem = playerItems.get(itemToBeUsed-1);
+		int itemDamage = selectedItem.increaseDamage() - selectedItem.reduceDamage();
+		monster.damageIgnoreArmor(itemDamage);
+		playerItems.remove(itemToBeUsed-1);
+		Master.ioManager.showMessage("Voce causou "+itemDamage+" de dano no monstro");
+	}
 	public void receiveSkill(Skill s){
-		s.useSkill(player,monster); //Verificar onde mostrar mensagens de saida comentadas
+		s.useSkill(player,monster);
 	}
 	public boolean tryRun(){
 		int runTest = (int)(Math.random()*100 - player.getLuck());
@@ -140,4 +158,4 @@ public class Combat{ //implements ActionListener (futuramente)
 		return false;
 	}
 
-} 
+}

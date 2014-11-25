@@ -1,14 +1,19 @@
 {	nouns:[
-		"Elefante",
 		"Carrasco",
-		"Ciclopes",
-		"Tartaruga",
-		"Che"
+		"Ciclope",
+		"Ursinho",
+		"Demonio",
+		"Rei"
 	],
 	adjectives:[
-		"Gigante",
-		"com Chifres",
-		"Rebelde"
+		"gigante",
+		"com chifres",
+		"rebelde",
+		"carinhoso",
+		"... o proprio",
+		"caolho",
+		"seguidor do Marx",
+		"das colinas"
 	]
 
 }

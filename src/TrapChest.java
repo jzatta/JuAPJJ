@@ -84,6 +84,8 @@ public class TrapChest implements GeneratedEvent, Nameable{
 				this.interacted = true;
 			}
 		}
+		Master.ioManager.waitInteraction();
+		Master.ioManager.clearScreen();
 	}
 	
 	private int getAction(Player player){
