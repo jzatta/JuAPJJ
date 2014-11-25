@@ -122,7 +122,7 @@ public class Combat{ //implements ActionListener (futuramente)
 			int enemyDefense = (int)((Math.pow(monster.getVit()-280.4,2)/110)+16);
 			int finalDamage = (int)((absoluteDamage*enemyDefense/730)+Math.random()*5*player.getLuck());
 			player.damage(finalDamage);
-			Master.ioManager.showMessage("Você levou "+finalDamage+" de dano.");
+			Master.ioManager.showMessage("Você levou "+finalDamage+" de dano. HP atual "+player.getHP());
 			if(player.isAlive()){
 				return true;
 			}

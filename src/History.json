@@ -5,34 +5,34 @@
 			evtPotentials:[7]
 		},
 		{
-			plot:"\n\n--1",
-			eventNames:["TrapChest","ItemChest"],
-			evtPotentials:[1,1]
+			plot:"\n\nÉ hora do combate",
+			eventNames:["Monster"],
+			evtPotentials:[7]
 		},
 		{
-			plot:"\n\n--2",
-			eventNames:["TrapChest","ItemChest"],
-			evtPotentials:[1,1]
+			plot:"\n\nÉ hora do combate",
+			eventNames:["Monster"],
+			evtPotentials:[7]
 		},
 		{
-			plot:"\n\n--3",
-			eventNames:["TrapChest","ItemChest"],
-			evtPotentials:[1,1]
+			plot:"\n\nÉ hora do combate",
+			eventNames:["Monster"],
+			evtPotentials:[7]
 		},
 		{
-			plot:"\n\n--4",
-			eventNames:["TrapChest","ItemChest"],
-			evtPotentials:[1,1]
+			plot:"\n\nÉ hora do combate",
+			eventNames:["Monster"],
+			evtPotentials:[7]
 		},
 		{
-			plot:"\n\n--5",
-			eventNames:["TrapChest","ItemChest"],
-			evtPotentials:[1,1]
+			plot:"\n\nÉ hora do combate",
+			eventNames:["Monster"],
+			evtPotentials:[7]
 		},
 		{
-			plot:"\n\n--6",
-			eventNames:["TrapChest","ItemChest"],
-			evtPotentials:[1,1]
+			plot:"\n\nÉ hora do combate",
+			eventNames:["Monster"],
+			evtPotentials:[7]
 		},
 		{
 			plot:"\n\nÉ a universidade não é assim tão simples, enfrente mais isto",

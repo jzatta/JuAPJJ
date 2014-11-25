@@ -81,6 +81,10 @@ class Player implements java.io.Serializable{
 		calculateHpSp();
 		exp = 0;
 		nextLevel*=(int)Math.pow(nextLevel,3)+3*(Math.pow(nextLevel,2)+2*nextLevel+1);
+		fillHP();
+	}
+	private void fillHP(){
+		currentHP = baseHP;
 	}
 	public void damage(int d){
 		currentHP -= d;
