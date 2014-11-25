@@ -24,6 +24,12 @@ runGuilhermeTester: $(CLASSES_DIR)/GuilhermeTester.class
 run: $(OBJ)
 	$(JAVA) Main $(ARGS)
 
+runJar: $(OBJ)
+	$(JAVA) -jar Jogo.jar $(ARGS)
+
+jar: $(OBJ) 
+	jar cfm Jogo.jar Manifest.txt $(CLASSES_DIR) $(LIBS)
+	
 $(CLASSES_DIR)/%.class: %.java Makefile
 	$(JC) $<
 
