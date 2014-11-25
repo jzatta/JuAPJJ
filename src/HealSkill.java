@@ -4,7 +4,6 @@ import java.io.IOException;
 class HealSkill implements Skill, Nameable{
 	private String name;
 	private int skillFactor;
-	private IOManager c;
 	private static NameGenerator skillNames = null;
 	
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
@@ -16,14 +15,13 @@ class HealSkill implements Skill, Nameable{
         this.skillFactor = skillFactor;
     }
 	public HealSkill(int skillFactor){
-		c = new Console();
 		if(skillNames != null) this.name = skillNames.getName();
 		this.skillFactor = skillFactor;
 	}
 	public void useSkill(Player p, Monster m){
 		int healAmt =p.getIntl()*skillFactor;
 		p.heal(healAmt);
-		c.showMessage("Healing "+healAmt+" HP");
+		Master.ioManager.showMessage("Healing "+healAmt+" HP");
 	}
 	public String skillName(){
 		return this.name;

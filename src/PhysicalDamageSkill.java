@@ -24,7 +24,7 @@ class PhysicalDamageSkill implements Skill, Nameable{
 		int absoluteDamage = p.getStr()*skillFactor;
 		int finalDamage = (int)(absoluteDamage/Math.sqrt(m.getVit()));
 		m.damage(finalDamage);
-// 		c.showMessage("Skill damage: "+finalDamage); // ver para: postar mesagem em outro lugar
+		Master.ioManager.showMessage("Skill damage: "+finalDamage); // ver para: postar mesagem em outro lugar
 	}
 	
 	public String skillName(){

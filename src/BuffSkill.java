@@ -5,7 +5,6 @@ class BuffSkill implements Skill, Nameable{
 	private String name;
 	private int skillFactor;
 	private String statToBuff;
-	private IOManager c;
 	private static NameGenerator skillNames = null;
 	
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
@@ -24,7 +23,6 @@ class BuffSkill implements Skill, Nameable{
     } 
     
 	public BuffSkill(String statToBuff, int skillFactor){
-		c = new Console();
 		if(skillNames != null) this.name = skillNames.getName();
 		this. skillFactor = skillFactor;
 		boolean validStat = false;
@@ -49,30 +47,30 @@ class BuffSkill implements Skill, Nameable{
 				toBuff = s;
 			}
 		}
-			switch(toBuff){ 
+		switch(toBuff){ 
 			case STR:
 				p.buffStr(skillFactor);
-				c.showMessage("STR increased!");
+				Master.ioManager.showMessage("STR increased!");
 				break;
 			case AGI:
 				p.buffAgi(skillFactor);
-				c.showMessage("AGI increased!");
+				Master.ioManager.showMessage("AGI increased!");
 				break;
 			case DEX:
 				p.buffDex(skillFactor);
-				c.showMessage("DEX increased!");
+				Master.ioManager.showMessage("DEX increased!");
 				break;
 			case INTL:
 				p.buffIntl(skillFactor);
-				c.showMessage("INT increased!");
+				Master.ioManager.showMessage("INT increased!");
 				break;
 			case VIT:
 				p.buffVit(skillFactor);
-				c.showMessage("VIT increased!");
+				Master.ioManager.showMessage("VIT increased!");
 				break;
 			case LUCK:
 				p.buffLuck(skillFactor);
-				c.showMessage("LUCK increased!");
+				Master.ioManager.showMessage("LUCK increased!");
 				break;
 			default:
 				break;
