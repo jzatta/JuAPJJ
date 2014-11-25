@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.InputMismatchException;
 
 public class TrapChest implements GeneratedEvent, Nameable{
 	private String name;
@@ -20,7 +21,7 @@ public class TrapChest implements GeneratedEvent, Nameable{
 	}
 
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
-		TrapChest.trapNames = namer.namesListFor(TrapChest.class);
+		TrapChest.trapNames = namer.namesListFor(ItemChest.class);
 	}
 	
 	public boolean active(){
@@ -62,7 +63,9 @@ public class TrapChest implements GeneratedEvent, Nameable{
 	}
 	
 	public void interacts(Player player){
-		if (interacted == false){
+		Master.ioManager.showMessage(this.getInteraction());
+		int pAction = this.getAction(player);
+		if (interacted == false && (pAction == 1)){
 			double chance = ((level * 0.75) + 4) * (Math.random()*1.75); // rever formula
 			if (chance > player.chanceToEscape()){
 				player.damage((int)(Math.random() * (15 + (level * 0.6))));
@@ -81,5 +84,29 @@ public class TrapChest implements GeneratedEvent, Nameable{
 				this.interacted = true;
 			}
 		}
+	}
+	
+	private int getAction(Player player){
+		int action= 1;
+		while(true){
+			Master.ioManager.showMessage("O que "+player.getName()+" fará?");
+			Master.ioManager.showMessage("=-=-=-=-=-=-=-");
+			Master.ioManager.showMessage("1.Pegar o que tem dentro\n2.Deixar quieto\n");
+			Master.ioManager.showMessage("=-=-=-=-=-=-=-");	
+			try{
+				action = Master.ioManager.getCommand();
+			
+				if(action < 1 || action > 2){
+					Master.ioManager.showMessage("Opção inválida");
+				}
+				else{
+					break;
+				}
+				
+			}catch(InputMismatchException e){
+				Master.ioManager.showMessage("Eu pedi um inteiro mano");
+			}
+		}
+		return action;
 	}
 }

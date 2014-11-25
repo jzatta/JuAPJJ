@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.InputMismatchException;
 
 public class ItemChest implements GeneratedEvent, Nameable{
 	private String name;
@@ -73,9 +74,35 @@ public class ItemChest implements GeneratedEvent, Nameable{
 	}
 
 	public void interacts(Player player){
-		if (interacted == false){
+		Master.ioManager.showMessage(this.getInteraction());
+		int pAction = this.getAction(player);
+		if (interacted == false && (pAction == 1)){
 			this.interacted = true;
 			player.addToInventory(new Item(level,player.getLuck()));
 		}
+	}
+	
+	private int getAction(Player player){
+		int action= 1;
+		while(true){
+			Master.ioManager.showMessage("O que "+player.getName()+" fará?");
+			Master.ioManager.showMessage("=-=-=-=-=-=-=-");
+			Master.ioManager.showMessage("1.Pegar o que tem dentro\n2.Deixar quieto\n");
+			Master.ioManager.showMessage("=-=-=-=-=-=-=-");	
+			try{
+				action = Master.ioManager.getCommand();
+			
+				if(action < 1 || action > 2){
+					Master.ioManager.showMessage("Opção inválida");
+				}
+				else{
+					break;
+				}
+				
+			}catch(InputMismatchException e){
+				Master.ioManager.showMessage("Eu pedi um inteiro mano");
+			}
+		}
+		return action;
 	}
 }
