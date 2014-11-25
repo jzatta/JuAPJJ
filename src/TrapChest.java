@@ -69,7 +69,7 @@ public class TrapChest implements GeneratedEvent, Nameable{
 			double chance = ((level * 0.75) + 4) * (Math.random()*1.75); // rever formula
 			if (chance > player.chanceToEscape()){
 				player.damage((int)(Math.random() * (15 + (level * 0.6))));
-				Master.ioManager.showMessage("It was a trap " + this.name + ". Your Hp is "+player.getHP());
+				Master.ioManager.showMessage("Xablaw! Isso foi uma armadilha " + this.name + ". Teu Hp é "+player.getHP());
 				this.interacted = true;
 //Formula: Math.random() * (150 + (level * 0.2 * 3 * 10) * 0.1)
 //Math.random()[random] * 
@@ -80,7 +80,7 @@ public class TrapChest implements GeneratedEvent, Nameable{
 //) *
 //0.1[10% of player hp]
 			} else{
-				Master.ioManager.showMessage("It was a trap " + this.name + ". You escaped!");
+				Master.ioManager.showMessage("Xablaw! Isso foi uma armadilha " + this.name + ". Reuiá! Você escapou");
 				this.interacted = true;
 			}
 		}

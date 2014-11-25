@@ -16,7 +16,6 @@ class Master {
 	private History history;
 	public static IOManager ioManager;
 	private final String playerSerFilePath = "player.ser";
-	private final String historySerFilePath = "history.ser";
 
 
 	public Master(IOManager ioManager){
@@ -56,12 +55,10 @@ class Master {
 	
 	public void loadGame(){
 		player = (Player)unSerializes(playerSerFilePath);
-		history = (History)unSerializes(historySerFilePath);
 	}
 
 	public void saveGame(){
 		serializes(player,playerSerFilePath);
-		serializes(history,historySerFilePath);
 	}
 	public boolean initialMenu(){
 		ioManager.showMessage("O que você deseja fazer?\n1) Novo jogo\n2) Carregar jogo\n3) Sair");
@@ -82,9 +79,6 @@ class Master {
 	
 	public void run(){
 		try{
-            //gerar uma sala
-            //ao final do evento, perguntar se o player quer mudar de sala, caso contrario
-            //dar um turno pro player se curar ou algo assim
 			while(initialMenu()){
 				do{
 					Room room = scene.generateRoom(player.getLevel());
@@ -98,7 +92,7 @@ class Master {
 					ioManager.showMessage("Você está na sala " + room.roomName());
 					ioManager.showMessage(history.context().plot());
 					room.getEvent().interacts(player);
-					if(player.isAlive()) saveGame();
+					saveGame();
 				}while(history.hasContext() && player.isAlive());
 			}
 			System.exit(0);
