@@ -48,7 +48,17 @@ class Player implements java.io.Serializable{
 			return true;
 		}
 		return false;
-	} 
+	}
+    public void addInitialSKills(){
+        HealSkill initialHealing = new HealSkill("Cura I",10);
+        BuffSkill initialStrBuff = new BuffSkill("STR","Aumentar STR I",3);
+        PhysicalDamageSkill initialPhysicalDamage = new PhysicalDamageSkill("Socão cabuloso da perdição",10);
+        MagicDamageSkill initialMagicDamage = new MagicDamageSkill("Macumba cabulosa",8);
+        skills.add(initialHealing);
+        skills.add(initialStrBuff);
+        skills.add(initialPhysicalDamage);
+        skills.add(initialMagicDamage);
+    } 
 	
 	public int getStr(){ return str; }
 	public int getAgi(){ return agi;}

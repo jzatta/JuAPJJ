@@ -11,7 +11,18 @@ class BuffSkill implements Skill, Nameable{
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
 		BuffSkill.skillNames = namer.namesListFor(BuffSkill.class);
 	}
-
+    
+    public BuffSkill(String statToBuff, String name, int skillFactor){
+        String[] stats = new String[]{"STR","AGI","DEX","INTL","VIT","LUCK"};
+        for(int i = 0; i < stats.length; i++){
+            if(stats[i].equalsIgnoreCase(statToBuff)){
+                this.statToBuff = statToBuff;
+            }
+        }
+        this.name = name;
+        this.skillFactor = skillFactor;
+    } 
+    
 	public BuffSkill(String statToBuff, int skillFactor){
 		c = new Console();
 		if(skillNames != null) this.name = skillNames.getName();

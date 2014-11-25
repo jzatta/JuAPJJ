@@ -82,6 +82,9 @@ class Master {
 	
 	public void run(){
 		try{
+            //gerar uma sala
+            //ao final do evento, perguntar se o player quer mudar de sala, caso contrario
+            //dar um turno pro player se curar ou algo assim
 			while(initialMenu()){
 				do{
 					Room room = scene.generateRoom(player.getLevel());

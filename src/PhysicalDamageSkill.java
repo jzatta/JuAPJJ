@@ -10,6 +10,10 @@ class PhysicalDamageSkill implements Skill, Nameable{
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
 		PhysicalDamageSkill.skillNames = namer.namesListFor(PhysicalDamageSkill.class);
 	}
+    public PhysicalDamageSkill(String name, int skillFactor){
+        this.name = name;
+        this.skillFactor = skillFactor;
+    }
 
 	public PhysicalDamageSkill(int skillFactor){
 		if(skillNames != null) this.name = skillNames.getName();

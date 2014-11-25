@@ -11,6 +11,10 @@ class MagicDamageSkill implements Skill, Nameable{
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
 		MagicDamageSkill.skillNames = namer.namesListFor(MagicDamageSkill.class);
 	}
+    public MagicDamageSkill(String name, int skillFactor){
+        this.name = name;
+        this.skillFactor=skillFactor;
+    }
 
 	public MagicDamageSkill(int skillFactor){
 //		c = new Console();

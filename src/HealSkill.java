@@ -10,7 +10,11 @@ class HealSkill implements Skill, Nameable{
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
 		HealSkill.skillNames = namer.namesListFor(HealSkill.class);
 	}
-
+    
+    public HealSkill(String name, int skillFactor){
+        this.name = name;
+        this.skillFactor = skillFactor;
+    }
 	public HealSkill(int skillFactor){
 		c = new Console();
 		if(skillNames != null) this.name = skillNames.getName();
