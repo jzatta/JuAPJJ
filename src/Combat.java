@@ -101,32 +101,13 @@ public class Combat{ //implements ActionListener (futuramente)
 		List<Skill> playerSkills = player.listSkills();
 		String skillsList = "";
 		for(int i = 0; i < playerSkills.size(); i++){
-			skillsList += i+1+"."+playerSkills.get(i).skillName()+"\n";
+			skillsList += (i+1)+"."+playerSkills.get(i).skillName()+"\n";
 		}
 		Master.ioManager.showMessage("Qual skill?\n"+skillsList);
 		int skillToBeUsed = Master.ioManager.getCommand();
 		receiveSkill(playerSkills.get(skillToBeUsed-1));
 	}
 	public void receiveSkill(Skill s){
-		/*SkillTypes type = s.getSkillType();
-		switch(type){
-			case HEALING:
-				s.heal(player);
-				Master.ioManager.showMessage("Your HP is now "+player.getHP());
-				break;
-			case BUFFING:
-				s.buff(player);
-				break;
-			case PHYSICALDAMAGE:
-				s.physicalDamage(player,monster);
-				Master.ioManager.showMessage("Foe "+monster.getName()+"'s HP is now "+monster.getHP());
-				break;
-			case MAGICDAMAGE:
-				s.magicDamage(player,monster);
-				Master.ioManager.showMessage("Enemy's HP: "+monster.getHP());
-				break;
-
-		}*/
 		s.useSkill(player,monster); //Verificar onde mostrar mensagens de saida comentadas
 	}
 	public boolean tryRun(){

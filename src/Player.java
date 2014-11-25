@@ -38,6 +38,7 @@ class Player implements java.io.Serializable{
 		this.vit = baseVit;
 		this.luck = baseLuck;
 		nextLevel = 50;
+		addInitialSKills();
 	}
 	public void calculateHpSp(){
 		this.baseHP = 50+ 10* baseVit;

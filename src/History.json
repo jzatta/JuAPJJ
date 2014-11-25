@@ -1,8 +1,8 @@
 {	context:[
 		{
 			plot:"\n\nVocê acaba de nascer, mas muitos desafios podem já acontecer!",
-			eventNames:["Monster","TrapChest","ItemChest"],
-			evtPotentials:[7,6,5]
+			eventNames:["Monster"],
+			evtPotentials:[7]
 		},
 		{
 			plot:"\n\n--1",
