@@ -20,7 +20,10 @@ class BuffSkill implements java.io.Serializable, Skill, Nameable{
         }
         this.name = name;
         this.skillFactor = skillFactor;
-    } 
+    }
+    public void levelUp(){
+        this.skillFactor+=5;
+    }
     
 	public BuffSkill(String statToBuff, int skillFactor){
 		if(skillNames != null) this.name = skillNames.getName();

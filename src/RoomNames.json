@@ -3,13 +3,30 @@
 		"Cabana",
 		"Oca",
 		"Puxadinho",
-		"Buraco"
+		"Buraco",
+        "Castelo",
+        "Caverna",
+        "Inferno",
+        "Paraíso",
+        "Banheiro",
+        "CTC",
+        "Padaria",
+        "Confeitaria"
 	],
 	adjectives:[
 		"do terror",
 		"da penumbra",
 		"de ossos",
-		"do Guntzel"
+        "do Guilherme",
+        "do Juliano",
+        "do Johnaltan",
+        "da perdição",
+        "do medo",
+        "da dor",
+        "da diversão",
+        "da Maquina Virtual Java",
+        "do C++",
+        "do seu tio engraçadão"
 	]
 
 }

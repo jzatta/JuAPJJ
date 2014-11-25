@@ -14,7 +14,9 @@ class PhysicalDamageSkill implements java.io.Serializable, Skill, Nameable{
         this.name = name;
         this.skillFactor = skillFactor;
     }
-
+    public void levelUp(){
+        this.skillFactor+=5;
+    }
 	public PhysicalDamageSkill(int skillFactor){
 		if(skillNames != null) this.name = skillNames.getName();
 		this.skillFactor = skillFactor;

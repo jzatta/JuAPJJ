@@ -11,7 +11,7 @@ public class GUI implements IOManager, ActionListener{
 	int command;
 	boolean hasCommand;
 	public GUI(){
-		window = new JFrame("JUAPJJ v.0.1 Alpha");
+		window = new JFrame("JUAPJJ v.0.2.4 Release Candidate");
 		pane = new JPanel();
 		textArea = new JTextArea();
 		DefaultCaret caret = (DefaultCaret)textArea.getCaret();

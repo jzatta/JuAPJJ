@@ -11,8 +11,8 @@ class Player implements java.io.Serializable{
 	private int nextLevel; //exp necessaria pra subir para o proximo level
 	private List<Skill> skills;
 	private List<Item> inventory;
-	private Item[] equipedItems;
-	private int accumulatedWeight;//soma dos pesos dos itens no inventario
+//	private Item[] equipedItems;
+	private int itemCounter;//soma dos pesos dos itens no inventario
 	
 
 	public Player(String name){
@@ -20,8 +20,8 @@ class Player implements java.io.Serializable{
 		this.level = 1;
 		skills = new ArrayList<Skill>();
 		inventory = new ArrayList<Item>();
-		equipedItems = new Item[4]; //Weapon, armor, shield, boots
-		accumulatedWeight = 0;
+//		equipedItems = new Item[4]; //Weapon, armor, shield, boots
+		itemCounter = 0;
 		baseStr = 5;
 		baseAgi = 5;
 		baseDex = 5;
@@ -82,10 +82,16 @@ class Player implements java.io.Serializable{
 		level++;
 		increaseStats();
 		calculateHpSp();
+        levelUpSkills();
 		exp = 0;
-		nextLevel*=(int)Math.pow(nextLevel,3)+3*(Math.pow(nextLevel,2)+2*nextLevel+1);
+		nextLevel*=(level+1)*(level+1)*50;
 		fillHP();
 	}
+    public void levelUpSkills(){
+        for(Skill skill:skills){
+            skill.levelUp();
+        }
+    }
 	private void fillHP(){
 		currentHP = baseHP;
 	}
@@ -168,19 +174,19 @@ class Player implements java.io.Serializable{
 		skills.remove(s);
 	}
 	public void addToInventory(Item i){
-		accumulatedWeight+= i.weight();
-		if(accumulatedWeight < 300){ //limite de peso do inventario, a estipular
+		if(itemCounter < 5){ 
 			inventory.add(i);
+            itemCounter++;
 		}
 		else{
-			accumulatedWeight-= i.weight();
+			itemCounter--;
 			Master.ioManager.showMessage("Pena que seu inventário estava cheio :/");
 		}
 	}
 	public void removeFromInventory(Item i){
 		inventory.remove(i);
-		accumulatedWeight -= i.weight();
-	}
+	    itemCounter--;
+	}/*
 	public void equipWeapon(Item w){ //weapons go to equipedItems[0]
 		if(!inventory.contains(w)){
 			return; //if the item is not on the inventory, gtfo
@@ -193,7 +199,7 @@ class Player implements java.io.Serializable{
 		}
 		baseStr += w.increaseDamage();
 		equipedItems[0] = w; // and finally equip the weapon. Should work.
-	}
+	}*/
 	
 	public double chanceToEscape(){
 		double formula = agi * 0.35 + dex * 0.35 + intl * 0.2 + luck * 0.1;

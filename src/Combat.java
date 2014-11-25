@@ -3,7 +3,7 @@ import java.util.*;
 public class Combat{ //implements ActionListener (futuramente)
 	private Player player;
 	private Monster monster;
-
+        
 	public Combat(Player p, Monster m){
 		player = p;
 		monster = m;
@@ -117,6 +117,10 @@ public class Combat{ //implements ActionListener (futuramente)
 		for(int i = 0; i < playerItems.size(); i++){
 			itemsList += (i+1)+"."+playerItems.get(i).itemName()+"\n";
 		}
+        if(playerItems.isEmpty()){
+            Master.ioManager.showMessage("Você não tem nenhum item");
+            return;
+        }
 		Master.ioManager.showMessage("Qual item?\n"+itemsList);
 		int itemToBeUsed = Master.ioManager.getCommand();
 		Item selectedItem = playerItems.get(itemToBeUsed-1);
