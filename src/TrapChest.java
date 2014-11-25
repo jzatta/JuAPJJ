@@ -59,7 +59,7 @@ public class TrapChest implements GeneratedEvent, Nameable{
 	}
 	
 	public String getInteraction(){
-		return "You found an "+name+"!";// Player dont know if is a ItemChest or a Trap
+		return "Você encontrou um "+name+"!";// Player dont know if is a ItemChest or a Trap
 	}
 	
 	public void interacts(Player player){

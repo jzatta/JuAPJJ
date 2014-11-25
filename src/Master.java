@@ -64,10 +64,10 @@ class Master {
 		serializes(history,historySerFilePath);
 	}
 	public boolean initialMenu(){
-		ioManager.showMessage("What do you want to do?\n1) New game\n2) Load game\n3) Exit");
+		ioManager.showMessage("O que você deseja fazer?\n1) Novo jogo\n2) Carregar jogo\n3) Sair");
 		switch(ioManager.getCommand()){
 			case 1:
-				String playerName = ioManager.getString("What's your player name?");
+				String playerName = ioManager.getString("Qual o nome do seu jogador?");
 				player = new Player(playerName);
 				history.reset();
 				break;
@@ -88,7 +88,7 @@ class Master {
 			while(initialMenu()){
 				do{
 					Room room = scene.generateRoom(player.getLevel());
-						for(int i = 0; i < history.context().eventNames().size(); i++){
+					for(int i = 0; i < history.context().eventNames().size(); i++){
 						Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
 						int potential = history.context().evtPotentials().get(i);
 						GeneratedEvent genEvt = genClass.newInstance();
@@ -98,7 +98,7 @@ class Master {
 					ioManager.showMessage("Você está na sala " + room.roomName());
 					ioManager.showMessage(history.context().plot());
 					room.getEvent().interacts(player);
-					saveGame();
+					if(player.isAlive()) saveGame();
 				}while(history.hasContext() && player.isAlive());
 			}
 			System.exit(0);
