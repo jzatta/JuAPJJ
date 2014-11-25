@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-class PhysicalDamageSkill implements Skill, Nameable{
+class PhysicalDamageSkill implements java.io.Serializable, Skill, Nameable{
 	private String name;
 	private int skillFactor;
 	private String statToBuff;

@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.text.*;
+
 public class GUI implements IOManager, ActionListener{
 	private JFrame window;
 	private JPanel pane;
@@ -12,6 +14,8 @@ public class GUI implements IOManager, ActionListener{
 		window = new JFrame("JUAPJJ v.0.1 Alpha");
 		pane = new JPanel();
 		textArea = new JTextArea();
+		DefaultCaret caret = (DefaultCaret)textArea.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 		scrollPane= new JScrollPane(textArea);
 		command = -1;
 		launchGUI();

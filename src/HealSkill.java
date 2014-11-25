@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-class HealSkill implements Skill, Nameable{
+class HealSkill implements java.io.Serializable, Skill, Nameable{
 	private String name;
 	private int skillFactor;
 	private static NameGenerator skillNames = null;
