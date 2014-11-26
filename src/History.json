@@ -25,7 +25,7 @@
 			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do Teste",
+			plot:"\n\nVocê começa a encontrar uma certa conexão entre as salas que você está explorando.",
 			eventNames:["Monster","TrapChest","ItemChest"],
 			evtPotentials:[1,1,1]
 		},

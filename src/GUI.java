@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.*;
+import java.io.*;
 
 public class GUI implements IOManager, ActionListener{
 	private JFrame window;
@@ -84,4 +85,5 @@ public class GUI implements IOManager, ActionListener{
 	public void clearScreen(){
 		textArea.setText(null);
 	}
+    
 }
