@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Combat{ //implements ActionListener (futuramente)
+public class Combat{ 
 	private Player player;
 	private Monster monster;
         
@@ -126,7 +126,7 @@ public class Combat{ //implements ActionListener (futuramente)
 		Item selectedItem = playerItems.get(itemToBeUsed-1);
 		int itemDamage = (int)Math.pow(selectedItem.increaseDamage() - selectedItem.reduceDamage(),2);
 		monster.damageIgnoreArmor(itemDamage);
-		playerItems.remove(itemToBeUsed-1);
+		player.removeFromInventory(selectedItem);
 		Master.ioManager.showMessage("Voce causou "+itemDamage+" de dano no monstro");
 	}
 	public void receiveSkill(Skill s){

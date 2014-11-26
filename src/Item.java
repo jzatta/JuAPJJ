@@ -5,7 +5,7 @@ class Item implements java.io.Serializable, Nameable{
 	private String name;
 	private int attack, defense;
 	private static NameGenerator itemNames = null;
-	private static final factor = 2;
+	private static final int factor = 2;
 	
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
 		Item.itemNames = namer.namesListFor(Item.class);
