@@ -124,7 +124,7 @@ public class Combat{ //implements ActionListener (futuramente)
 		Master.ioManager.showMessage("Qual item?\n"+itemsList);
 		int itemToBeUsed = Master.ioManager.getCommand();
 		Item selectedItem = playerItems.get(itemToBeUsed-1);
-		int itemDamage = selectedItem.increaseDamage() - selectedItem.reduceDamage();
+		int itemDamage = (int)Math.pow(selectedItem.increaseDamage() - selectedItem.reduceDamage(),2);
 		monster.damageIgnoreArmor(itemDamage);
 		playerItems.remove(itemToBeUsed-1);
 		Master.ioManager.showMessage("Voce causou "+itemDamage+" de dano no monstro");

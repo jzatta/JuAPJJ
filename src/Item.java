@@ -5,6 +5,7 @@ class Item implements java.io.Serializable, Nameable{
 	private String name;
 	private int attack, defense;
 	private static NameGenerator itemNames = null;
+	private static final factor = 2;
 	
 	public void updateNames(Namer namer) throws FileNotFoundException, IOException{
 		Item.itemNames = namer.namesListFor(Item.class);
@@ -15,8 +16,8 @@ class Item implements java.io.Serializable, Nameable{
 
 	public Item(int plevel, int luck){
 		if(itemNames != null) this.name = itemNames.getName();
-		attack = (int)(Math.random() * plevel*0.75 * luck*0.75);
-		defense = (int)(Math.random() * plevel*0.75 * luck*0.75);
+		attack = (int)(Math.random() * plevel*factor * luck*factor);
+		defense = (int)(Math.random() * plevel*factor * luck*factor);
 	}
 	
 	public int reduceDamage(){

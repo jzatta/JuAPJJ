@@ -26,7 +26,7 @@ class Monster implements GeneratedEvent, Nameable{
 	
 	public Monster(){
 		this.name = null;
-		this.level = 1;
+		this.level = 0;
 		this.itemPuckUp = false;
 		generateStats();
 	}
