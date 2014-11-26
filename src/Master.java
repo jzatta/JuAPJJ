@@ -82,6 +82,7 @@ class Master {
 	
 	public void run(){
 		try{
+        //    MusicPlayer mPlayer = new MusicPlayer("../resources/music.wav");
 			while(initialMenu()){
 				do{
 					Room room = scene.generateRoom(player.getLevel());
