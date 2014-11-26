@@ -30,32 +30,32 @@
 			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do Teste",
+			plot:"\n\nParece que as portas que você encontrou estão todas marcadas com uma espécie de padrão.\nCada padrão, escrito em alguma linguagem que você não conhece,\nparece descrever alguma característica específica da sala onde você se encontra.\nVocê se pergunta se consegue mapear essas portas e tentar sair\ndeste labirinto.",
 			eventNames:["Monster","TrapChest","ItemChest"],
 			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do Teste",
+			plot:"\n\nO desespero toma conta de você quando você percebe que não tem papel e caneta para fazer\nsuas anotações, e a sua memória não é muito boa.",
 			eventNames:["Monster","TrapChest","ItemChest"],
 			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do Teste",
+			plot:"\n\nVocê começa a ficar cansado.Você não vai mais conseguir andar por muito tempo.\n Talvez seja hora de descansar.",
 			eventNames:["Monster","TrapChest","ItemChest"],
 			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ hora do Teste",
+			plot:"\n\nCom suas energias revigoradas, você encontra alguns pedaços de carvão em uma fogueira próxima.\nVocê se esforça para pegar uma tábua de pedra, para que você possa começar a desenhar um mapa.",
 			eventNames:["Monster","TrapChest","ItemChest"],
 			evtPotentials:[1,1,1]
 		},
 		{
-			plot:"\n\nÉ a universidade não é assim tão simples, enfrente mais isto",
+			plot:"\n\nVocê explora todo tipo de salas, e vai fazendo anotações e\ndesenhos descrevendo o \"layout\" do lugar onde se encontra",
 			eventNames:["TrapChest"],
 			evtPotentials:[5]
 		},
 		{
-			plot:"\n\nPlot twist: treta com um monstro ae",
+			plot:"\n\nVocê se sente otimista, pois começa a ver um padrão na localização dos diferentes símbolos que demarcam as portas.",
 			eventNames:["Monster"],
 			evtPotentials:[1]
 		},
@@ -150,7 +150,7 @@
             evtPotentials:[1,1,1]
         },
 		{
-            plot:"",
+            plot:"\n\nVocê começa a ficar cansado, mas suas pesquisas a respeito\ndeste estranho labirinto dimensional estão\ndando frutos.Você começa a se sentir\nfascinado com este lugar.\nVocê se pergunta se está perdendo sua sanidade, e começando a se divertir\ncom a sua solitária aventura.Você resolve não pensar muito nisso\ne prossegue com a sua exploração das salas.",
             eventNames:["Monster","TrapChest","ItemChest"],
             evtPotentials:[1,1,1]
         },
@@ -220,7 +220,122 @@
             evtPotentials:[1,1,1]
         },
 		{
+            plot:"\n\nVocê sente uma presença bizarra nas suas redondezas. Com o tempo que você já passou explorando\nestas salas,você aprendeu a identificar ameaças e sentir presenças em salas próximas.\nParece que você está prestes a enfrentar uma horda de monstros!",
+            eventNames:["Monster","TrapChest","ItemChest"],
+            evtPotentials:[1,1,1]
+        },
+		{
             plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"\n\nNão importa quantos monstros você mata, você continua encontrando mais. Suas energias estão se esvaindo pouco a pouco...\n",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["Monster"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"\n\nVocê cai aliviado ao perceber que todas as presenças próximas se esvaíram. Parece que você\nsuperou esta adversidade. Você tem um bom pressentimento\nquanto às próximas salas que você vai explorar",
+            eventNames:["ItemChest"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["ItemChest"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["ItemChest"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["ItemChest"],
+            evtPotentials:[1,1,1]
+        },
+		{
+            plot:"\n\nAgora você começa a se sentir paranóico. É melhor não confiar em nada.",
+            eventNames:["TrapChest"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["TrapChest"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["TrapChest"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"",
+            eventNames:["TrapChest"],
+            evtPotentials:[1]
+        },
+		{
+            plot:"\n\nVocê sente monstros por perto...",
             eventNames:["Monster","TrapChest","ItemChest"],
             evtPotentials:[1,1,1]
         },
@@ -265,122 +380,7 @@
             evtPotentials:[1,1,1]
         },
 		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
-            eventNames:["Monster","TrapChest","ItemChest"],
-            evtPotentials:[1,1,1]
-        },
-		{
-            plot:"",
+            plot:"END",
             eventNames:["Monster","TrapChest","ItemChest"],
             evtPotentials:[1,1,1]
         }

@@ -84,7 +84,7 @@ class Player implements java.io.Serializable{
 		calculateHpSp();
         levelUpSkills();
 		exp = 0;
-		nextLevel*=(level+1)*(level+1)*50;
+		nextLevel*=(level)*(level)*50;
 		fillHP();
 	}
     public void levelUpSkills(){

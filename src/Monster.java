@@ -56,7 +56,7 @@ class Monster implements GeneratedEvent, Nameable{
 		luck = (int)((Math.random()*100)%(level+7))+1;
 		armorLevel = (int)(Math.random()*level-1);
 		weaponLevel = (int)(Math.random()*level-1);
-		expToGive = level*50;
+		expToGive = 5*level*50;
 	}
 	
 	public boolean active(){
