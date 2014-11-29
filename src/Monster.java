@@ -2,7 +2,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-class Monster implements GeneratedEvent, Nameable{
+class Monster extends GenericEvent{
 	private String name;
 	private int level;
 	private int health;

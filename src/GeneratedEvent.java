@@ -11,5 +11,4 @@ interface GeneratedEvent{
 	void setupName(String name);
 	void setupLevel(int level);
 	void interacts(Player player);
-	void addItselfRoom(Room room, int potential);
 }

@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.InputMismatchException;
 
-public class ItemChest implements GeneratedEvent, Nameable{
+public class ItemChest extends GenericEvent{
 	private String name;
 	private int level; //not sure if we will use this.
 	private boolean interacted;

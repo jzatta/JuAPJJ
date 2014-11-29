@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.IndexOutOfBoundsException;
 
 public class Combat{ 
 	private Player player;
@@ -122,12 +123,19 @@ public class Combat{
             return;
         }
 		Master.ioManager.showMessage("Qual item?\n"+itemsList);
-		int itemToBeUsed = Master.ioManager.getCommand();
-		Item selectedItem = playerItems.get(itemToBeUsed-1);
-		int itemDamage = (int)Math.pow(selectedItem.increaseDamage() - selectedItem.reduceDamage(),2);
-		monster.damageIgnoreArmor(itemDamage);
-		player.removeFromInventory(selectedItem);
-		Master.ioManager.showMessage("Voce causou "+itemDamage+" de dano no monstro");
+		while (true){
+			int itemToBeUsed = Master.ioManager.getCommand();
+			try{
+				Item selectedItem = playerItems.get(itemToBeUsed-1);
+				int itemDamage = (int)Math.pow(selectedItem.increaseDamage() - selectedItem.reduceDamage(),2);
+				monster.damageIgnoreArmor(itemDamage);
+				player.removeFromInventory(selectedItem);
+				Master.ioManager.showMessage("Voce causou "+itemDamage+" de dano no monstro");
+				break;
+			}catch (IndexOutOfBoundsException e){
+				Master.ioManager.showMessage("Escolha um item do seu inventário");
+			}
+		}
 	}
 	public void receiveSkill(Skill s){
 		s.useSkill(player,monster);

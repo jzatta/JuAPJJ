@@ -88,9 +88,9 @@ class Master {
 				do{
 					Room room = scene.generateRoom(player.getLevel());
 					for(int i = 0; i < history.context().eventNames().size(); i++){
-						Class<GeneratedEvent> genClass = (Class<GeneratedEvent>)Class.forName(history.context().eventNames().get(i));
+						Class<GenericEvent> genClass = (Class<GenericEvent>)Class.forName(history.context().eventNames().get(i));
 						int potential = history.context().evtPotentials().get(i);
-						GeneratedEvent genEvt = genClass.newInstance();
+						GenericEvent genEvt = genClass.newInstance();
 						scene.addNameable((Nameable)genEvt);
 						genEvt.addItselfRoom(room,potential);
 					}
