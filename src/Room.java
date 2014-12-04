@@ -5,7 +5,7 @@ import java.io.IOException;
 class Room implements Nameable{
 	private String localName;
 	private int difficulty;
-	private static List<Class<?>> classesList;
+	private static List<Class<? implements GeneratedEvent>> classesList;
 	private static List<Integer> potentialList;
 	private static List<NameGenerator> namesList;
 	private static final int variance = 7;
@@ -16,7 +16,7 @@ class Room implements Nameable{
 		namer.addNameable(this);
 		this.localName = roomNames.getName();
 		this.difficulty = level;
-		classesList = new ArrayList<Class<?>>();
+		classesList = new ArrayList<Class<? implements GeneratedEvent>>();
 		potentialList = new ArrayList<Integer>();
 		namesList = new ArrayList<NameGenerator>();
 	}
@@ -28,7 +28,7 @@ class Room implements Nameable{
 		Room.roomNames = namer.namesListFor(Room.class);
 	}
 	
-	public void addGeneratedEvent(Class<?> classOf, NameGenerator names, int potential){
+	public void addGeneratedEvent(Class<? implements GeneratedEvent> classOf, NameGenerator names, int potential){
 		Room.classesList.add(classOf);
 		Room.potentialList.add(potential);
 		Room.namesList.add(names);
